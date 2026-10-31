@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kaydenkamberi.github.io/dev-portfolio/sitemap.xml

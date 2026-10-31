@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marisol — Coastal Kitchen &amp; Bar | Baja seafood in San Diego</title>
+  <meta name="description" content="Baja seafood cooked over a wood fire. Three counters in San Diego: La Jolla, North Park, and Coronado.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:SOFT,WONK,opsz,wght@40,1,9..144,600;40,1,9..144,900&family=DM+Sans:wght@400;500&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Guarded so a blocked or offline CDN degrades gracefully to the
+    // custom.css design instead of throwing.
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cal: "var(--cal)",
+              sal: "var(--sal)",
+              hielo: "var(--hielo)",
+              cobalto: "var(--cobalto)",
+              tinta: "var(--tinta)",
+              chile: "var(--chile)"
+            },
+            fontFamily: {
+              display: ["Anton", "Haettenschweiler", "Arial Narrow", "sans-serif"],
+              sans: ["IBM Plex Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+            },
+            borderRadius: { DEFAULT: "0", none: "0" }
+          }
+        }
+      };
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <span class="header-sentinel" data-header-sentinel aria-hidden="true"></span>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="index.html">Marisol</a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        Menu
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="menu.html">Menu</a></li>
+          <li><a class="nav-link" href="locations.html">Locations</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+        <div class="header-contact">
+          <a class="header-phone" href="tel:+16195550142">(619) 555-0142</a>
+          <a class="btn btn-outline" href="locations.html">Order</a>
+          <a class="btn btn-accent" href="locations.html#reserve">Reserve</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" aria-labelledby="hero-name">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy reveal" data-reveal-now>
+            <h1 class="t-display t-hero" id="hero-name">Marisol</h1>
+            <p class="hero-kicker">Coastal Kitchen &amp; Bar</p>
+            <p class="hero-line">
+              Baja seafood cooked over a wood fire. Three counters in San Diego.
+            </p>
+            <p class="hero-actions">
+              <a class="btn btn-accent" href="locations.html#reserve">Reserve a table</a>
+            </p>
+          </div>
+
+          <figure class="hero-photo">
+            <img src="assets/images/hero.jpg"
+                 alt="An oceanfront deck at Marisol with white tables and chairs under a palm tree and strung lights, the beach beyond."
+                 width="480" height="640" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+      <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#0B6E7F"/>
+    </svg>
+  </div>
+
+    <!-- ============================ INTRO ============================ -->
+    <section class="intro" aria-label="About Marisol">
+      <div class="wrap">
+        <hr class="intro-mark">
+        <p class="t-lead measure">
+          We buy fish off three boats at Tuna Harbor and cook most of it over a wood fire.
+          The rest gets cured, fried, or folded into a tortilla. It is not complicated food,
+          and we would rather you order too much of it than exactly the right amount.
+        </p>
+        <p class="measure">
+          <a href="about.html">Read how the restaurant started</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= SIGNATURE DISHES ======================= -->
+    <section class="signatures" aria-labelledby="signatures-heading">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="t-display t-section" id="signatures-heading">What we&rsquo;re known for</h2>
+          <a class="section-head-link" href="menu.html">See the full menu</a>
+        </div>
+
+        <ul class="dish-grid">
+          <li class="dish">
+            <figure>
+              <img src="assets/images/dish-ceviche-verde.jpg"
+                   alt="A small bowl of green ceviche on a patterned tile counter."
+                   width="148" height="148" loading="lazy" decoding="async">
+            </figure>
+            <div class="dish-head">
+              <h3 class="t-display t-item">Ceviche Verde</h3>
+              <p class="dish-price"><span class="u-visually-hidden">Price </span>16</p>
+            </div>
+            <p class="dish-note">Rock shrimp, cucumber, serrano, lime, tostadas</p>
+          </li>
+          <li class="dish">
+            <figure>
+              <img src="assets/images/dish-baja-fish-taco.jpg"
+                   alt="Three fish tacos on flour tortillas with red cabbage, pico de gallo, avocado and lime."
+                   width="554" height="554" loading="lazy" decoding="async">
+            </figure>
+            <div class="dish-head">
+              <h3 class="t-display t-item">Baja Fish Taco</h3>
+              <p class="dish-price"><span class="u-visually-hidden">Price </span>7</p>
+            </div>
+            <p class="dish-note">Beer-battered rockfish, cabbage, chipotle crema</p>
+          </li>
+          <li class="dish">
+            <figure>
+              <img src="assets/images/dish-branzino.jpg"
+                   alt="A whole grilled branzino on a blue patterned platter with cherry tomatoes, red onion and dill."
+                   width="452" height="678" loading="lazy" decoding="async">
+            </figure>
+            <div class="dish-head">
+              <h3 class="t-display t-item">Whole Grilled Branzino</h3>
+              <p class="dish-price"><span class="u-visually-hidden">Price </span>34</p>
+            </div>
+            <p class="dish-note">Citrus, herbs, salsa macha</p>
+          </li>
+          <li class="dish">
+            <figure>
+              <img src="assets/images/dish-camarones.jpg"
+                   alt="A bowl of shrimp in garlic chilli butter, scattered with chopped parsley."
+                   width="452" height="678" loading="lazy" decoding="async">
+            </figure>
+            <div class="dish-head">
+              <h3 class="t-display t-item">Camarones al Ajillo</h3>
+              <p class="dish-price"><span class="u-visually-hidden">Price </span>27</p>
+            </div>
+            <p class="dish-note">Guajillo butter, grilled bread</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================= COME VISIT US ========================= -->
+    <section class="locations-strip" aria-labelledby="locations-heading">
+      <div class="wrap">
+        <h2 class="t-display t-section reveal" id="locations-heading">Come visit us</h2>
+
+        <ul class="strip-grid stagger-80">
+          <li class="reveal">
+            <a class="visit-card" href="locations.html#la-jolla">
+              <figure class="visit-photo">
+                <img src="assets/images/location-la-jolla.jpg"
+                     alt="The La Jolla dining room, with a painted teal mural reading Marisol behind pale wood chairs and marble tables."
+                     width="800" height="1000" loading="lazy" decoding="async">
+              </figure>
+              <h3 class="t-display t-item">La Jolla</h3>
+              <address class="strip-address">1220 Prospect St, Suite 4<br>San Diego, CA 92037</address>
+              <span class="strip-phone">(619) 555-0142</span>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="visit-card" href="locations.html#north-park">
+              <figure class="visit-photo">
+                <img src="assets/images/location-north-park.jpg"
+                     alt="The North Park frontage, with a yellow Marisol awning over tall windows and pavement tables under green umbrellas."
+                     width="800" height="1000" loading="lazy" decoding="async">
+              </figure>
+              <h3 class="t-display t-item">North Park</h3>
+              <address class="strip-address">3005 University Ave<br>San Diego, CA 92104</address>
+              <span class="strip-phone">(619) 555-0187</span>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="visit-card" href="locations.html#coronado">
+              <figure class="visit-photo">
+                <img src="assets/images/location-coronado.jpg"
+                     alt="The Coronado storefront under a green and white striped awning, with planters and globe lights along the pavement."
+                     width="800" height="1000" loading="lazy" decoding="async">
+              </figure>
+              <h3 class="t-display t-item">Coronado</h3>
+              <address class="strip-address">1102 Orange Ave<br>Coronado, CA 92118</address>
+              <span class="strip-phone">(619) 555-0163</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="wave wave-flip" aria-hidden="true">
+    <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+      <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#08333D"/>
+    </svg>
+  </div>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer field-dark">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="t-display t-sub footer-mark">Marisol</p>
+          <p class="t-small">Coastal Kitchen &amp; Bar</p>
+          <p class="t-small measure-narrow">Baja seafood cooked over a wood fire, in three San Diego neighborhoods.</p>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Visit</h2>
+          <ul class="footer-list">
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html#reserve">Reserve a table</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Hours</h2>
+          <ul class="footer-list">
+            <li>Mon&ndash;Thu 11am&ndash;10pm</li>
+            <li>Fri&ndash;Sat 11am&ndash;11pm</li>
+            <li>Sun 10am&ndash;9pm</li>
+            <li>Sunday brunch until 2pm</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Contact</h2>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@marisolcoastal.com">hello@marisolcoastal.com</a></li>
+            <li><a href="https://www.instagram.com/">&#64;marisolcoastal</a></li>
+            <li><a href="tel:+16195550142">(619) 555-0142</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-fine">
+        <p>&copy; 2026 Marisol Coastal Kitchen &amp; Bar</p>
+        <p>Marisol is a fictional restaurant, built as a portfolio demonstration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

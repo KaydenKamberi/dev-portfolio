@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu &mdash; Marisol Coastal Kitchen &amp; Bar</title>
+  <meta name="description" content="Starters, tacos, plates, sides, dessert and cocktails at Marisol, a Baja seafood restaurant with three San Diego locations.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:SOFT,WONK,opsz,wght@40,1,9..144,600;40,1,9..144,900&family=DM+Sans:wght@400;500&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Guarded so a blocked or offline CDN degrades gracefully to the
+    // custom.css design instead of throwing.
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cal: "var(--cal)",
+              sal: "var(--sal)",
+              hielo: "var(--hielo)",
+              cobalto: "var(--cobalto)",
+              tinta: "var(--tinta)",
+              chile: "var(--chile)"
+            },
+            fontFamily: {
+              display: ["Anton", "Haettenschweiler", "Arial Narrow", "sans-serif"],
+              sans: ["IBM Plex Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+            },
+            borderRadius: { DEFAULT: "0", none: "0" }
+          }
+        }
+      };
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <span class="header-sentinel" data-header-sentinel aria-hidden="true"></span>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="index.html">Marisol</a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        Menu
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="menu.html" aria-current="page">Menu</a></li>
+          <li><a class="nav-link" href="locations.html">Locations</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+        <div class="header-contact">
+          <a class="header-phone" href="tel:+16195550142">(619) 555-0142</a>
+          <a class="btn btn-outline" href="locations.html">Order</a>
+          <a class="btn btn-accent" href="locations.html#reserve">Reserve</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap page-head-inner">
+        <h1 class="t-display t-title">Menu</h1>
+        <div class="page-head-body">
+          <p class="t-lead measure">
+            The fish changes with what the boats bring in. If something is crossed off the
+            board, it will be back. Everything else has been on this menu since 2016.
+          </p>
+          <p class="t-small page-head-note">
+            Prices in US dollars. <span class="menu-veg" aria-hidden="true">(v)</span> marks a vegetarian dish.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="menu-jump" aria-label="Menu sections">
+      <div class="wrap">
+        <ul class="menu-jump-list" data-tablist>
+          <li class="tab-underline" data-tab-underline aria-hidden="true"></li>
+            <li><a href="#starters">Starters</a></li>
+            <li><a href="#tacos">Tacos</a></li>
+            <li><a href="#plates">Plates</a></li>
+            <li><a href="#sides">Sides</a></li>
+            <li><a href="#dessert">Dessert</a></li>
+            <li><a href="#cocktails">Cocktails</a></li>
+            <li><a href="#no-alcohol">No Alcohol</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrap menu-body stagger-60">
+      <section class="menu-section reveal" id="starters" aria-labelledby="starters-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="starters-heading">Starters</h2>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Chips &amp; Salsa Trio</h3>
+            <p class="menu-item-note">Charred tomato, salsa verde, chile de &aacute;rbol</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>9</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Ceviche Verde</h3>
+            <p class="menu-item-note">Rock shrimp, cucumber, serrano, lime, tostadas</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>16</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Blistered Shishitos</h3>
+            <p class="menu-item-note">Sea salt, lime crema</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>11</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Grilled Octopus</h3>
+            <p class="menu-item-note">Chorizo, fingerling potato, romesco</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>18</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Queso Fundido</h3>
+            <p class="menu-item-note">Chorizo, poblano, flour tortillas</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>14</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="menu-section reveal" id="tacos" aria-labelledby="tacos-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="tacos-heading">Tacos</h2>
+          <p class="menu-section-note">Priced each</p>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Baja Fish</h3>
+            <p class="menu-item-note">Beer-battered rockfish, cabbage, chipotle crema</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>7</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Carne Asada</h3>
+            <p class="menu-item-note">Salsa roja, onion, cilantro</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>7</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Al Pastor</h3>
+            <p class="menu-item-note">Pineapple, onion</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>6.50</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Mushroom &amp; Rajas<span class="menu-veg" aria-hidden="true">(v)</span><span class="u-visually-hidden"> (vegetarian)</span></h3>
+            <p class="menu-item-note">Poblano, oaxaca cheese</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>6.50</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="menu-section reveal" id="plates" aria-labelledby="plates-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="plates-heading">Plates</h2>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Whole Grilled Branzino</h3>
+            <p class="menu-item-note">Citrus, herbs, salsa macha</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>34</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Carne Asada</h3>
+            <p class="menu-item-note">12oz skirt, frijoles, arroz, tortillas</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>32</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Pollo en Mole Negro</h3>
+            <p class="menu-item-note">Half chicken, sesame, plantain</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>28</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Camarones al Ajillo</h3>
+            <p class="menu-item-note">Guajillo butter, grilled bread</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>27</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Coastal Bowl<span class="menu-veg" aria-hidden="true">(v)</span><span class="u-visually-hidden"> (vegetarian)</span></h3>
+            <p class="menu-item-note">Quinoa, black beans, avocado, pepita salsa</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>19</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="menu-section reveal" id="sides" aria-labelledby="sides-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="sides-heading">Sides</h2>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Elote</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>8</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Frijoles de la Olla</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>6</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Arroz Verde</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>6</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="menu-section reveal" id="dessert" aria-labelledby="dessert-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="dessert-heading">Dessert</h2>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Tres Leches</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>10</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Churros con Chocolate</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>9</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Key Lime Tart</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>10</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="menu-section reveal" id="cocktails" aria-labelledby="cocktails-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="cocktails-heading">Cocktails</h2>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Marisol Margarita</h3>
+            <p class="menu-item-note">Blanco tequila, lime, agave</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>14</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Paloma de Fuego</h3>
+            <p class="menu-item-note">Mezcal, grapefruit, chile salt</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>15</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Ranch Water</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>12</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Michelada</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>10</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="menu-section reveal" id="no-alcohol" aria-labelledby="no-alcohol-heading">
+        <div class="menu-section-head">
+          <h2 class="t-display t-section" id="no-alcohol-heading">No Alcohol</h2>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <h3 class="menu-item-name">Agua Fresca</h3>
+            <p class="menu-item-note">Hibiscus, horchata, or pi&ntilde;a</p>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>6</p>
+          </li>
+          <li class="menu-item">
+            <h3 class="menu-item-name">Mexican Coke</h3>
+            <p class="menu-item-price"><span class="u-visually-hidden">Price </span>4</p>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="menu-foot">
+      <div class="wrap">
+        <p class="measure">
+          Large parties, allergies, and anything you want cooked a different way &mdash;
+          call the room you are coming to, or <a href="locations.html#reserve">send us a note</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="wave wave-flip" aria-hidden="true">
+    <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+      <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#08333D"/>
+    </svg>
+  </div>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer field-dark">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="t-display t-sub footer-mark">Marisol</p>
+          <p class="t-small">Coastal Kitchen &amp; Bar</p>
+          <p class="t-small measure-narrow">Baja seafood cooked over a wood fire, in three San Diego neighborhoods.</p>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Visit</h2>
+          <ul class="footer-list">
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html#reserve">Reserve a table</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Hours</h2>
+          <ul class="footer-list">
+            <li>Mon&ndash;Thu 11am&ndash;10pm</li>
+            <li>Fri&ndash;Sat 11am&ndash;11pm</li>
+            <li>Sun 10am&ndash;9pm</li>
+            <li>Sunday brunch until 2pm</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Contact</h2>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@marisolcoastal.com">hello@marisolcoastal.com</a></li>
+            <li><a href="https://www.instagram.com/">&#64;marisolcoastal</a></li>
+            <li><a href="tel:+16195550142">(619) 555-0142</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-fine">
+        <p>&copy; 2026 Marisol Coastal Kitchen &amp; Bar</p>
+        <p>Marisol is a fictional restaurant, built as a portfolio demonstration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

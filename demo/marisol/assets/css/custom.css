@@ -1,0 +1,1802 @@
+/* ==========================================================================
+   Marisol — Coastal Kitchen & Bar
+   Design tokens, base styles, and shared components.
+
+   Tailwind (CDN) handles layout utilities. Everything that Tailwind cannot
+   express as a utility lives here: custom properties, font stacks, focus
+   rings, the talavera motif, and the header/footer components that are
+   identical on all four pages.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Palette --------------------------------------------------------------
+     Warm, sunlit, soft. Cream ground, deep Pacific teal for large flat
+     blocks, one coral for action.
+
+     Two additions to the specified six, both forced by contrast maths:
+     --coral-ink is the same hue as --coral (10deg) but dark enough to be
+     text or a thin border on cream; --line is a warm hairline, replacing the
+     cool grey the old palette used for rules. See the README. */
+  --shell:     #FDF6EE;   /* warm cream — the page ground, everywhere       */
+  --sea:       #0B6E7F;   /* deep Pacific teal — large flat blocks          */
+  --surf:      #7FD1CC;   /* pale turquoise — washes, hovers, type on teal  */
+  --coral:     #FF6A4D;   /* sunset coral — fills only                      */
+  --deep:      #08333D;   /* darkest teal — footer                          */
+  --ink:       #16292F;   /* body text                                      */
+
+  --coral-ink: #D03818;   /* coral as text or thin line on cream (4.60:1)   */
+  --line:      #E4D6C6;   /* warm hairline rules and borders                */
+  --muted:     #55686D;   /* secondary body text on cream (5.46:1)          */
+
+  /* Typography ----------------------------------------------------------- */
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-text: "DM Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+
+  /* The redesign fixes five sizes and asks for no others. The old
+     --step-* names are kept as aliases so every existing rule maps onto one
+     of the five rather than inventing in-between values. */
+  --t-hero:  clamp(3.5rem, 9vw, 7rem);
+  --t-h2:    clamp(2.25rem, 5vw, 3.75rem);
+  --t-h3:    1.5rem;
+  --t-body:  1.125rem;
+  --t-small: 0.875rem;
+
+  --step--2: var(--t-small);
+  --step--1: var(--t-small);
+  --step-0:  var(--t-body);
+  --step-1:  var(--t-body);
+  --step-2:  var(--t-h3);
+  --step-3:  var(--t-h3);
+  --step-4:  var(--t-h2);
+  --step-5:  var(--t-h2);
+  --step-6:  var(--t-hero);
+
+  /* Space, 8px base ------------------------------------------------------ */
+  --space-1:  0.5rem;
+  --space-2:  1rem;
+  --space-3:  1.5rem;
+  --space-4:  2rem;
+  --space-5:  3rem;
+  --space-6:  4rem;
+  --space-7:  6rem;
+  --space-8:  8rem;
+
+  /* Structure ------------------------------------------------------------ */
+  --grout: 6px;            /* gap between adjacent blocks */
+  --radius: 14px;          /* cards and blocks */
+  --pill: 999px;           /* buttons */
+  --arch: 50% 50% 14px 14px / 30% 30% 14px 14px;   /* photo mask */
+  --measure: 62ch;         /* body line length, well under 80 characters */
+  --wrap: 78rem;           /* 1248px content container */
+  --gutter: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --grout: 4px;
+    --gutter: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  background-color: var(--shell);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  line-height: 1.65;
+  font-variant-numeric: tabular-nums;   /* prices align without hacks */
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* Blocks are soft. Photographs get the arch, controls get 14px, buttons get
+   a pill; nothing on the site has a hard 90 degree corner. */
+input,
+select,
+textarea,
+fieldset {
+  border-radius: var(--radius);
+}
+
+/* --------------------------------------------------------------------------
+   3. Focus and skip link
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--coral-ink);
+  outline-offset: 2px;
+}
+
+/* Inside teal or deep fields the coral ring loses contrast, so it flips to
+   cream. The open mobile nav is one of those fields: a coral ring on the teal
+   panel has almost no contrast, well under the 3:1 minimum for an indicator.
+   The `.field-dark:focus-visible` case covers a dark panel that is itself
+   focusable, which the descendant selector alone would miss. */
+.field-dark :focus-visible,
+.field-dark:focus-visible,
+.site-nav.is-open :focus-visible,
+.hero :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--shell);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: var(--space-2);
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--pill);
+  background-color: var(--coral);
+  color: var(--ink);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography helpers
+   -------------------------------------------------------------------------- */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.t-hero {
+  font-size: var(--t-hero);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.t-title,
+.t-section { font-size: var(--t-h2); }
+
+/* h3 is the one display weight that is not 900 */
+.t-sub,
+.t-item {
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.t-lead {
+  font-size: var(--t-body);
+  line-height: 1.65;
+}
+
+.t-small { font-size: var(--step--1); }
+.t-micro { font-size: var(--step--2); }
+
+.measure     { max-width: var(--measure); }
+.measure-narrow { max-width: 46ch; }
+
+/* --------------------------------------------------------------------------
+   5. Layout
+   -------------------------------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+.rule-cobalto {
+  border: 0;
+  border-top: 2px solid var(--sea);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. Header rule
+
+   This slot held a CSS-drawn talavera lattice. Cut: at 14px it read as a
+   checkered ribbon rather than azulejo, and it competed with the hero, which
+   is where this page spends its boldness. A single structural rule does the
+   separating job without arguing.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   7. Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--pill);
+  font-family: var(--font-text);
+  font-size: var(--t-small);
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease,
+    border-color 200ms ease;
+}
+
+/* Primary: coral fill. The label is --ink, not --shell: cream on this coral
+   is 2.64:1, which fails even the 3:1 floor for non-text. Ink is 5.33:1. */
+.btn-accent {
+  background-color: var(--coral);
+  color: var(--ink);
+  border-color: var(--coral);
+}
+
+.btn-accent:hover {
+  background-color: transparent;
+  color: var(--coral-ink);
+  border-color: var(--coral-ink);
+}
+
+/* Secondary: outline that fills on hover. The line and label use --coral-ink
+   for the same reason: a #FF6A4D hairline on cream is 2.64:1. */
+.btn-outline {
+  background-color: transparent;
+  color: var(--coral-ink);
+  border-color: var(--coral-ink);
+}
+
+.btn-outline:hover {
+  background-color: var(--coral);
+  color: var(--ink);
+  border-color: var(--coral);
+}
+
+/* A coral pill on teal is only 2.09:1 against its backdrop, so on dark fields
+   it gets a cream ring to make the component boundary unambiguous. */
+.hero .btn-accent,
+.field-dark .btn-accent,
+.site-nav.is-open .btn-accent {
+  border-color: var(--shell);
+}
+
+/* coral-ink is invisible on teal (1.20:1), so the outline button inverts. */
+.site-nav.is-open .btn-outline,
+.field-dark .btn-outline {
+  color: var(--shell);
+  border-color: var(--shell);
+}
+
+.site-nav.is-open .btn-outline:hover,
+.field-dark .btn-outline:hover {
+  background-color: var(--shell);
+  color: var(--sea);
+  border-color: var(--shell);
+}
+
+/* On a teal or ink field, where coral has no contrast at all (2.09:1). */
+.btn-light {
+  background-color: var(--shell);
+  color: var(--ink);
+  border-color: var(--shell);
+}
+
+.btn-light:hover {
+  background-color: transparent;
+  color: var(--shell);
+  border-color: var(--shell);
+}
+
+/* --------------------------------------------------------------------------
+   8. Site header — identical on all four pages
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: var(--shell);
+  transition: box-shadow 200ms ease, background-color 200ms ease;
+}
+
+/* main.js adds .is-stuck once a sentinel 100px down the page leaves the
+   viewport. This is the one shadow on the site. */
+.site-header.is-stuck {
+  background-color: rgba(253, 246, 238, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px -12px rgba(8, 51, 61, 0.45);
+}
+
+.header-sentinel {
+  position: absolute;
+  top: 100px;
+  height: 1px;
+  width: 1px;
+  pointer-events: none;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--sea);
+  text-decoration: none;
+}
+
+.wordmark:hover {
+  color: var(--coral-ink);
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--pill);
+  background-color: transparent;
+  border: 2px solid var(--sea);
+  color: var(--sea);
+  font-family: var(--font-text);
+  font-size: var(--step--1);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-toggle-bars {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+  position: relative;
+}
+
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.nav-toggle-bars::before { top: -6px; }
+.nav-toggle-bars::after  { top: 6px; }
+
+.site-nav {
+  display: none;
+}
+
+.site-nav.is-open {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: var(--sea);
+  color: var(--shell);
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: var(--space-3) var(--gutter) var(--space-4);
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 0;
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--coral-ink);
+}
+
+.site-nav.is-open .nav-link[aria-current="page"] {
+  color: var(--surf);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+}
+
+.header-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(253, 246, 238, 0.25);
+}
+
+@media (max-width: 1099.98px) and (min-width: 900px) {
+  .header-phone {
+    display: none;
+  }
+}
+
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.header-phone:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav,
+  .site-nav.is-open {
+    display: flex;
+    position: static;
+    align-items: center;
+    gap: var(--space-4);
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: var(--space-4);
+  }
+
+  .nav-link {
+    position: relative;
+    font-family: var(--font-text);
+    font-size: var(--t-small);
+    font-weight: 500;
+    /* text plus this padding clears the 24px minimum target size */
+    padding: 0.55rem 0;
+  }
+
+  /* Underline grows from the left, and stays put on the current page so the
+     active state is not signalled by colour alone. */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.3rem;
+    height: 2px;
+    background-color: var(--coral-ink);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms ease;
+  }
+
+  .nav-link:hover::after,
+  .site-nav .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link:hover {
+    color: var(--coral-ink);
+  }
+
+  .site-nav .nav-link[aria-current="page"] {
+    color: var(--coral-ink);
+    text-decoration: none;
+  }
+
+  .header-contact {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Site footer — identical on all four pages
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background-color: var(--deep);
+  color: var(--shell);
+  padding-block: var(--space-6) var(--space-4);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4) var(--space-3);
+  }
+}
+
+@media (min-width: 1000px) {
+  .footer-grid {
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  }
+}
+
+.footer-mark {
+  margin: 0 0 0.25rem;
+}
+
+.footer-heading {
+  font-family: var(--font-text);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--line);
+  margin: 0 0 var(--space-2);
+}
+
+.footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: var(--step--1);
+}
+
+.footer-list a {
+  text-decoration: none;
+}
+
+.footer-list a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-fine {
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(253, 246, 238, 0.2);
+  font-size: var(--step--2);
+  color: var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   9b. Shrink behaviour
+
+   Grid and flex children default to min-width:auto, so they refuse to shrink
+   below their content's intrinsic width and push the page wider instead. That
+   shows up as horizontal overflow with a long email address, or with text-only
+   zoom turned up. Let them shrink, and let long display words break rather
+   than run off the edge.
+   -------------------------------------------------------------------------- */
+
+.footer-grid > *,
+.strip-grid > *,
+.hero-grid > *,
+.dish-grid > *,
+.menu-section > *,
+.about-section > *,
+.location > *,
+.reserve-inner > *,
+.page-head-inner > *,
+.field-row > *,
+.menu-item > *,
+.dish-head > * {
+  min-width: 0;
+}
+
+.t-display,
+.menu-item-name,
+.footer-list,
+.location-address {
+  overflow-wrap: break-word;
+}
+
+.header-inner {
+  flex-wrap: wrap;
+}
+
+
+/* --------------------------------------------------------------------------
+   9c. Shape and motion
+
+   Arches on every photograph, pills on every button, 14px on every block,
+   and no box-shadow anywhere except the header once it sticks.
+   -------------------------------------------------------------------------- */
+
+.arch {
+  overflow: hidden;
+  border-radius: var(--arch);
+}
+
+.arch img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scalloped edge where a teal block meets the cream ground. The SVG fills the
+   colour it is leaving; .wave-flip turns it over for the other direction. */
+.wave {
+  display: block;
+  width: 100%;
+  padding-block: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+  height: 26px;
+}
+
+.wave-flip svg {
+  transform: scaleY(-1);
+}
+
+/* Motion ------------------------------------------------------------------ */
+
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms cubic-bezier(.16, 1, .3, 1),
+              transform 600ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.js-reveal .reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggers are done in CSS so the observer stays a single, dumb toggle. */
+.reveal {
+  transition: opacity 600ms cubic-bezier(.16, 1, .3, 1),
+              transform 600ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.stagger-60  > .reveal:nth-child(2) { transition-delay:  60ms; }
+.stagger-60  > .reveal:nth-child(3) { transition-delay: 120ms; }
+.stagger-60  > .reveal:nth-child(4) { transition-delay: 180ms; }
+.stagger-60  > .reveal:nth-child(5) { transition-delay: 240ms; }
+.stagger-60  > .reveal:nth-child(n+6) { transition-delay: 300ms; }
+
+.stagger-80  > .reveal:nth-child(2) { transition-delay:  80ms; }
+.stagger-80  > .reveal:nth-child(3) { transition-delay: 160ms; }
+.stagger-80  > .reveal:nth-child(n+4) { transition-delay: 240ms; }
+
+/* --------------------------------------------------------------------------
+   10. Utilities
+   -------------------------------------------------------------------------- */
+
+[hidden] {
+  display: none !important;
+}
+
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* A small label above a block: sentence case, never caps. */
+.tile-label {
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--coral-ink);
+  margin: 0 0 0.35rem;
+}
+
+.field-dark .tile-label {
+  color: var(--line);
+}
+
+/* Vegetarian mark on the menu. */
+.menu-veg {
+  margin-left: 0.35em;
+  font-family: var(--font-text);
+  /* 0.85em of the 14px legend line fell to 11.9px; keep a floor of 13px */
+  font-size: max(0.85em, 0.8125rem);
+  font-weight: 500;
+  color: var(--coral-ink);
+  white-space: nowrap;
+}
+
+.hours-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: var(--step--1);
+}
+
+.hours-list li {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.hours-list li span:first-child {
+  min-width: 6.5rem;
+  font-weight: 600;
+}
+
+.prose p {
+  max-width: var(--measure);
+  margin: 0 0 var(--space-2);
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   11. Scaffold styles
+   Structural spacing only. Checkpoints 3 to 5 replace these with the real
+   page designs.
+   -------------------------------------------------------------------------- */
+
+main > section,
+main > div {
+  padding-block: var(--space-5);
+}
+
+.page-head h1 {
+  margin: 0 0 var(--space-3);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+.hero-grid,
+.dish-grid,
+.strip-grid,
+.menu-list,
+.menu-jump-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.field-dark {
+  background-color: var(--sea);
+  color: var(--shell);
+}
+
+.site-footer.field-dark {
+  background-color: var(--deep);
+}
+
+/* Forms ------------------------------------------------------------------ */
+
+.field {
+  margin-bottom: var(--space-3);
+}
+
+.field label {
+  display: block;
+  font-size: var(--t-small);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  color: var(--ink);
+  background-color: var(--shell);
+  border: 2px solid var(--line);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--sea);
+}
+
+.field [aria-invalid="true"] {
+  border-color: var(--coral-ink);
+}
+
+.field-hint,
+.field-optional {
+  font-size: var(--t-small);
+  color: var(--muted);
+  margin: 0.4rem 0 0;
+}
+
+.field-error {
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--coral-ink);
+  margin: 0.4rem 0 0;
+}
+
+.form-error-summary {
+  background-color: var(--shell);
+  border: 2px solid var(--coral-ink);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.form-error-title {
+  margin: 0 0 0.5rem;
+  font-size: var(--t-body);
+  font-weight: 500;
+}
+
+.form-error-summary ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: var(--t-small);
+}
+
+.form-error-summary a {
+  color: var(--coral-ink);
+  font-weight: 500;
+}
+
+
+/* --------------------------------------------------------------------------
+   12. Home page
+
+   A full-width teal panel: wordmark and copy on the left, an arched
+   photograph on the right. The photo is a neighbour, not a backdrop.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  background-color: var(--sea);
+  color: var(--shell);
+  padding-block: var(--space-6);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  color: var(--shell);
+}
+
+/* Fraunces 600 in --surf. 3.35:1 on teal, so this is only ever used large. */
+.hero-kicker {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-size: var(--t-h3);
+  line-height: 1.2;
+  color: var(--surf);
+  margin: var(--space-2) 0 0;
+}
+
+.hero-line {
+  margin: var(--space-3) 0 0;
+  max-width: 34ch;
+  color: var(--shell);
+}
+
+.hero-actions {
+  margin: var(--space-4) 0 0;
+}
+
+.hero-photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--arch);
+}
+
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 60vh;
+  object-fit: cover;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: scale(1); }
+  to   { transform: scale(1.04); }
+}
+
+@media (min-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 6fr 4fr;
+    gap: var(--space-6);
+  }
+
+  .hero-photo img {
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+}
+
+/* Intro ------------------------------------------------------------------ */
+
+.intro {
+  padding-block: var(--space-4) var(--space-6);
+}
+
+.intro-mark {
+  width: 3.5rem;
+  border: 0;
+  border-top: 5px solid var(--coral);
+  border-radius: var(--pill);
+  margin: 0 0 var(--space-3);
+}
+
+.intro p + p {
+  margin-top: var(--space-3);
+}
+
+.intro a {
+  font-weight: 600;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.intro a:hover {
+  color: var(--coral-ink);
+}
+
+/* Signature dishes -------------------------------------------------------- */
+
+.signatures {
+  padding-block: 0 var(--space-7);
+}
+
+.section-head-link {
+  display: inline-block;
+  padding-block: 0.2rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
+.section-head-link:hover {
+  color: var(--coral-ink);
+}
+
+.dish-grid {
+  display: grid;
+  gap: var(--space-5) var(--space-3);
+  grid-template-columns: 1fr;
+  margin-top: var(--space-4);
+}
+
+.dish figure {
+  margin: 0 0 var(--space-2);
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.dish img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* Name and price share a baseline under a heavy rule: the price is the second
+   headline, never a whispered grey number. */
+.dish-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0 var(--space-2);
+  padding-top: 0.2rem;
+}
+
+.dish-head h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dish-price {
+  margin: 0;
+  font-size: var(--t-h3);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--coral-ink);
+}
+
+.dish-note {
+  margin: 0.5rem 0 0;
+  font-size: var(--step--1);
+  max-width: 34ch;
+  color: var(--muted);
+}
+
+@media (min-width: 640px) {
+  .dish-grid { grid-template-columns: repeat(2, 1fr); }
+  .dish img { aspect-ratio: 4 / 5; }
+}
+
+@media (min-width: 1024px) {
+  .dish-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Come visit us ----------------------------------------------------------- */
+
+.locations-strip {
+  background-color: var(--shell);
+  color: var(--ink);
+  padding-block: var(--space-6) var(--space-7);
+  text-align: center;
+}
+
+.locations-strip h2 {
+  margin: 0 auto var(--space-5);
+  color: var(--sea);
+}
+
+.strip-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  text-align: left;
+}
+
+.visit-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.visit-photo {
+  margin: 0 0 var(--space-3);
+  overflow: hidden;
+  border-radius: var(--arch);
+}
+
+.visit-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 400ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.visit-card:hover .visit-photo img {
+  transform: scale(1.03);
+}
+
+.strip-grid h3 {
+  margin: 0 0 var(--space-1);
+  color: var(--sea);
+}
+
+.visit-card:hover h3 {
+  color: var(--coral-ink);
+}
+
+.strip-address {
+  font-style: normal;
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+}
+
+.strip-phone {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (min-width: 760px) {
+  .strip-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. Interior page masthead
+   Shared by menu, locations and about: the page name on the left, the
+   introduction sitting on its baseline to the right.
+   -------------------------------------------------------------------------- */
+
+.page-head {
+  padding-block: var(--space-5) var(--space-4);
+}
+
+.page-head-inner {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.page-head h1 {
+  margin: 0;
+}
+
+.page-head-body > * {
+  margin: 0;
+}
+
+.page-head-body > * + * {
+  margin-top: var(--space-2);
+}
+
+.page-head-note {
+  color: var(--muted);
+}
+
+@media (min-width: 850px) {
+  .page-head-inner {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-5);
+    align-items: end;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. Menu page
+
+   Nothing here but type. Section names hang in a column of their own and the
+   dishes run beside them, so the eye can find a course without a rule, a box
+   or a background tint doing the work.
+   -------------------------------------------------------------------------- */
+
+.menu-jump {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  background-color: var(--shell);
+  border-block: 1px solid var(--line);
+  padding-block: 0;
+}
+
+.menu-jump-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem var(--space-3);
+  padding-block: 0.7rem;
+}
+
+/* Slides between tabs rather than jumping. */
+.tab-underline {
+  position: absolute;
+  left: 0;
+  bottom: 0.45rem;
+  width: 0;
+  height: 2px;
+  border-radius: var(--pill);
+  background-color: var(--coral-ink);
+  pointer-events: none;
+  transition: transform 250ms cubic-bezier(.16, 1, .3, 1),
+              width 250ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.menu-jump-list a.is-active {
+  color: var(--coral-ink);
+}
+
+.menu-jump-list a {
+  display: block;
+  font-size: var(--step--1);
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.menu-jump-list a:hover {
+  color: var(--coral-ink);
+}
+
+.menu-body {
+  padding-block: 0 var(--space-3);
+}
+
+.menu-section {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 60rem;
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--line);
+  /* clear the sticky jump bar when an anchor is followed */
+  scroll-margin-top: 3.5rem;
+}
+
+.menu-section-head h2 {
+  margin: 0;
+}
+
+.menu-section-note {
+  margin: var(--space-1) 0 0;
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--coral-ink);
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--space-3);
+  padding-block: var(--space-2);
+}
+
+.menu-item + .menu-item {
+  border-top: 1px solid var(--line);
+}
+
+.menu-item-name {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Same size and weight as the name, on the same baseline. A menu price is
+   information, not a footnote. */
+.menu-item-price {
+  grid-area: 1 / 2;
+  margin: 0;
+  font-size: var(--t-body);
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: right;
+}
+
+.menu-item-note {
+  grid-area: 2 / 1;
+  margin: 0.15rem 0 0;
+  font-size: var(--step-0);
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.menu-foot {
+  padding-block: var(--space-5) var(--space-7);
+}
+
+.menu-foot .wrap > p {
+  max-width: 60rem;
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4);
+}
+
+.menu-foot a {
+  font-weight: 600;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.menu-foot a:hover {
+  color: var(--coral-ink);
+}
+
+@media (min-width: 800px) {
+  .menu-section {
+    grid-template-columns: 19rem 1fr;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+  }
+
+  .menu-section-head {
+    position: sticky;
+    top: 4.5rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   15. Locations page
+   -------------------------------------------------------------------------- */
+
+.hours-panel {
+  background-color: var(--sea);
+  color: var(--shell);
+  padding-block: var(--space-5);
+}
+
+/* A sentence-case label, not a tracked-out caps eyebrow. */
+.panel-label {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--line);
+  margin: 0 0 var(--space-2);
+}
+
+.hours-list-wide li span:first-child {
+  min-width: 5.5rem;
+}
+
+@media (min-width: 700px) {
+  .hours-list-wide {
+    flex-direction: row;
+    gap: var(--space-6);
+  }
+
+  .hours-list-wide li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .hours-list-wide li span:first-child {
+    min-width: 0;
+  }
+}
+
+.locations-body {
+  padding-block: var(--space-6) var(--space-4);
+}
+
+/* Arched photo beside a rounded detail block. Consistent across all three
+   rooms: the structure is the information, so alternating the sides would
+   only be decoration. */
+.location {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grout);
+  max-width: 66rem;
+  margin-bottom: var(--space-6);
+  scroll-margin-top: var(--space-3);
+}
+
+.location:last-child {
+  margin-bottom: 0;
+}
+
+.location-photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--arch);
+}
+
+.location-photo img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.location-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--shell);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.location-detail h2,
+.location-detail p {
+  margin: 0;
+}
+
+.location-address {
+  font-style: normal;
+  font-size: var(--step-1);
+  line-height: 1.4;
+}
+
+.location-phone {
+  font-weight: 600;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.location-phone:hover {
+  color: var(--coral-ink);
+}
+
+.location-detail .location-actions {
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+
+@media (min-width: 800px) {
+  .location {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .location-photo img {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Reservation form ------------------------------------------------------- */
+
+.reserve {
+  border-top: 1px solid var(--line);
+  padding-block: var(--space-6) var(--space-7);
+}
+
+.reserve-inner {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.reserve-intro h2 {
+  margin: 0 0 var(--space-2);
+}
+
+.reserve-intro p {
+  margin: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: var(--space-3);
+}
+
+.form-error-summary {
+  background-color: var(--shell);
+}
+
+.form-error-summary a {
+  color: var(--coral-ink);
+  font-weight: 600;
+}
+
+.reserve-form {
+  max-width: 34rem;
+}
+
+.form-submit {
+  margin-top: var(--space-1);
+}
+
+.form-note {
+  margin-top: var(--space-3);
+  max-width: 46ch;
+}
+
+.reserve-confirmation .tile-label {
+  color: var(--line);
+}
+
+.reserve-confirmation .t-sub {
+  margin: 0 0 var(--space-2);
+}
+
+.reserve-confirmation p {
+  margin: 0 0 var(--space-2);
+}
+
+.reserve-confirmation p:last-child {
+  margin-bottom: 0;
+  color: var(--line);
+}
+
+@media (min-width: 480px) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .reserve-inner {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .reserve-intro {
+    grid-area: 1 / 1;
+  }
+
+  /* The form and its confirmation occupy the same cell, so the panel appears
+     exactly where the form was rather than shifting the page. */
+  .reserve-form,
+  .reserve-confirmation {
+    grid-area: 1 / 2;
+    max-width: 34rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. About page
+   Same hanging-column system as the menu, so the interior pages read as one
+   family rather than three separate designs.
+   -------------------------------------------------------------------------- */
+
+.about-body {
+  padding-block: var(--space-3) var(--space-7);
+}
+
+.about-section {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 60rem;
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.about-head h2 {
+  margin: 0;
+}
+
+.about-head .tile-label {
+  margin: var(--space-1) 0 0;
+}
+
+.about-content .prose p {
+  font-size: var(--step-0);
+}
+
+.about-figure {
+  margin: var(--space-4) 0 0;
+}
+
+.about-figure {
+  overflow: hidden;
+  border-radius: var(--arch);
+}
+
+.about-figure img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.about-figure-feature {
+  margin-top: var(--space-4);
+}
+
+.about-figure-feature img {
+  aspect-ratio: 4 / 3;
+}
+
+.about-figure figcaption {
+  padding-top: 0.6rem;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.about-figure-portrait {
+  max-width: 22rem;
+}
+
+.about-figure-portrait img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+@media (min-width: 800px) {
+  .about-section {
+    grid-template-columns: 20rem 1fr;
+    gap: var(--space-5);
+  }
+
+}
+
+
+/* --------------------------------------------------------------------------
+   18. Print
+
+   The menu is the page people actually print. Drop the furniture, keep the
+   wordmark and the food, and stop sections from splitting across pages.
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .site-nav,
+  .nav-toggle,
+  .wave,
+  .hero-actions,
+  .site-footer,
+  .menu-jump,
+  .skip-link,
+  .hero-tile-reserve,
+  .location-actions,
+  .reserve-form,
+  .reserve-confirmation,
+  .menu-foot {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;   /* paper */
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .site-header {
+    background: #fff;
+    border-bottom: 1pt solid #111;
+    padding-bottom: 0.4rem;
+  }
+
+  .menu-item-note,
+  .dish-note,
+  .about-figure figcaption,
+  .page-head-note {
+    color: #333 !important;
+  }
+
+  .wrap {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .menu-section,
+  .about-section,
+  .location,
+  .dish,
+  figure {
+    break-inside: avoid;
+  }
+
+  .menu-section {
+    border-top: 1pt solid #111;
+    padding-block: 0.6rem;
+  }
+
+  .menu-item + .menu-item {
+    border-top: 1pt solid #bbb;
+  }
+
+  /* Colour fields would eat a print cartridge for no benefit. */
+  .field-dark,
+  .hero,
+  .locations-strip,
+  .hours-panel,
+  .location-detail {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .hours-panel {
+    border: 1pt solid #111;
+  }
+
+  .menu-item-price,
+  .menu-item-name,
+  .tile-label,
+  .panel-label {
+    color: #111 !important;
+  }
+
+  img {
+    max-width: 100%;
+    animation: none !important;
+  }
+
+  .arch,
+  .hero-photo,
+  .visit-photo,
+  .location-photo,
+  .about-figure,
+  .dish figure {
+    border-radius: var(--radius);
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   19. Motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js-reveal .reveal,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

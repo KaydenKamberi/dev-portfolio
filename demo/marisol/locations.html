@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Locations &mdash; Marisol Coastal Kitchen &amp; Bar</title>
+  <meta name="description" content="Marisol in La Jolla, North Park and Coronado. Addresses, phone numbers, hours, and a table request form.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:SOFT,WONK,opsz,wght@40,1,9..144,600;40,1,9..144,900&family=DM+Sans:wght@400;500&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Guarded so a blocked or offline CDN degrades gracefully to the
+    // custom.css design instead of throwing.
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cal: "var(--cal)",
+              sal: "var(--sal)",
+              hielo: "var(--hielo)",
+              cobalto: "var(--cobalto)",
+              tinta: "var(--tinta)",
+              chile: "var(--chile)"
+            },
+            fontFamily: {
+              display: ["Anton", "Haettenschweiler", "Arial Narrow", "sans-serif"],
+              sans: ["IBM Plex Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+            },
+            borderRadius: { DEFAULT: "0", none: "0" }
+          }
+        }
+      };
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <span class="header-sentinel" data-header-sentinel aria-hidden="true"></span>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="index.html">Marisol</a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        Menu
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="menu.html">Menu</a></li>
+          <li><a class="nav-link" href="locations.html" aria-current="page">Locations</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+        <div class="header-contact">
+          <a class="header-phone" href="tel:+16195550142">(619) 555-0142</a>
+          <a class="btn btn-outline" href="locations.html">Order</a>
+          <a class="btn btn-accent" href="locations.html#reserve">Reserve</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap page-head-inner">
+        <h1 class="t-display t-title">Locations</h1>
+        <div class="page-head-body">
+          <p class="t-lead measure">
+            Three rooms, one menu, the same fish. Walk-ins are always worth trying &mdash;
+            every location holds a few counter seats back.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave wave-flip" aria-hidden="true">
+      <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+        <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#0B6E7F"/>
+      </svg>
+    </div>
+    <section class="hours-panel field-dark" aria-labelledby="hours-heading">
+      <div class="wrap">
+        <h2 class="panel-label" id="hours-heading">Same hours at all three</h2>
+        <ul class="hours-list hours-list-wide">
+          <li><span>Mon&ndash;Thu</span> <span>11am&ndash;10pm</span></li>
+          <li><span>Fri&ndash;Sat</span> <span>11am&ndash;11pm</span></li>
+          <li><span>Sun</span> <span>10am&ndash;9pm, brunch until 2pm</span></li>
+        </ul>
+      </div>
+    </section>
+    <div class="wave" aria-hidden="true">
+      <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+        <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#0B6E7F"/>
+      </svg>
+    </div>
+
+    <div class="wrap locations-body stagger-80">
+      <section class="location reveal" id="la-jolla" aria-labelledby="la-jolla-heading">
+        <figure class="location-photo">
+          <img src="assets/images/location-la-jolla.jpg"
+               alt="The La Jolla dining room, with a painted teal mural reading Marisol behind pale wood chairs and marble tables."
+               width="800" height="1000" loading="lazy" decoding="async">
+        </figure>
+        <div class="location-detail">
+          <h2 class="t-display t-section" id="la-jolla-heading">La Jolla</h2>
+          <p class="measure">The original room, open since 2016. Six seats at the counter are held back for walk-ins every night.</p>
+          <address class="location-address">
+            1220 Prospect St, Suite 4<br>
+            San Diego, CA 92037
+          </address>
+          <p><a class="location-phone" href="tel:+16195550142">(619) 555-0142</a></p>
+          <p class="location-actions">
+            <a class="btn btn-outline" href="#reserve">Reserve here</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="location reveal" id="north-park" aria-labelledby="north-park-heading">
+        <figure class="location-photo">
+          <img src="assets/images/location-north-park.jpg"
+               alt="The North Park frontage, with a yellow Marisol awning over tall windows and pavement tables under green umbrellas."
+               width="800" height="1000" loading="lazy" decoding="async">
+        </figure>
+        <div class="location-detail">
+          <h2 class="t-display t-section" id="north-park-heading">North Park</h2>
+          <p class="measure">The biggest of the three, and the only one with a patio. Most of the tequila lives here.</p>
+          <address class="location-address">
+            3005 University Ave<br>
+            San Diego, CA 92104
+          </address>
+          <p><a class="location-phone" href="tel:+16195550187">(619) 555-0187</a></p>
+          <p class="location-actions">
+            <a class="btn btn-outline" href="#reserve">Reserve here</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="location reveal" id="coronado" aria-labelledby="coronado-heading">
+        <figure class="location-photo">
+          <img src="assets/images/location-coronado.jpg"
+               alt="The Coronado storefront under a green and white striped awning, with planters and globe lights along the pavement."
+               width="800" height="1000" loading="lazy" decoding="async">
+        </figure>
+        <div class="location-detail">
+          <h2 class="t-display t-section" id="coronado-heading">Coronado</h2>
+          <p class="measure">A bait shop for forty years before we took it over in 2022. We kept the tile and the smell of salt.</p>
+          <address class="location-address">
+            1102 Orange Ave<br>
+            Coronado, CA 92118
+          </address>
+          <p><a class="location-phone" href="tel:+16195550163">(619) 555-0163</a></p>
+          <p class="location-actions">
+            <a class="btn btn-outline" href="#reserve">Reserve here</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================== RESERVATION FORM ===================== -->
+    <section class="reserve" id="reserve" aria-labelledby="reserve-heading">
+      <div class="wrap reserve-inner">
+        <div class="reserve-intro">
+          <h2 class="t-display t-section reveal" id="reserve-heading">Ask for a table</h2>
+          <p class="measure">
+            Tell us when and how many. We answer these in the morning, usually before
+            eleven. For a party larger than twelve, call the room directly &mdash; it is
+            faster.
+          </p>
+        </div>
+
+        <form class="reserve-form" data-reservation-form novalidate>
+          <div class="form-error-summary" data-error-summary tabindex="-1" hidden>
+            <h3 class="form-error-title">That didn&rsquo;t send. Check these:</h3>
+            <ul data-error-list></ul>
+          </div>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required
+                   aria-describedby="name-error">
+            <p class="field-error" id="name-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required
+                   aria-describedby="email-error">
+            <p class="field-error" id="email-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="location">Location</label>
+            <select id="location" name="location" required aria-describedby="location-error">
+              <option value="">Choose a room</option>
+              <option value="la-jolla">La Jolla</option>
+              <option value="north-park">North Park</option>
+              <option value="coronado">Coronado</option>
+            </select>
+            <p class="field-error" id="location-error" hidden></p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="party">Party size</label>
+              <input type="number" id="party" name="party" min="1" max="12" step="1"
+                     inputmode="numeric" required aria-describedby="party-hint party-error">
+              <p class="field-hint" id="party-hint">1 to 12</p>
+              <p class="field-error" id="party-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required aria-describedby="date-error">
+              <p class="field-error" id="date-error" hidden></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message <span class="field-optional">(optional)</span></label>
+            <textarea id="message" name="message" rows="4"
+                      aria-describedby="message-hint message-error"></textarea>
+            <p class="field-hint" id="message-hint">Allergies, a birthday, a preferred time.</p>
+            <p class="field-error" id="message-error" hidden></p>
+          </div>
+
+          <button class="btn btn-accent form-submit" type="submit">Send request</button>
+
+          <p class="field-hint form-note">
+            This is a demonstration site. Nothing is sent anywhere and no data leaves your browser.
+          </p>
+        </form>
+
+        <div class="reserve-confirmation field-dark" data-reservation-confirmation tabindex="-1" hidden>
+          <p class="tile-label">Request received</p>
+          <p class="t-display t-sub">Thank you, <span data-confirmation-name>friend</span>.</p>
+          <p class="measure">
+            We have your request and will confirm by email in the morning. If you need an
+            answer sooner than that, call the room directly &mdash; someone is at the counter
+            from ten.
+          </p>
+          <p class="t-small">
+            Nothing was actually sent. This form is a demonstration and does not submit anywhere.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="wave wave-flip" aria-hidden="true">
+    <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+      <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#08333D"/>
+    </svg>
+  </div>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer field-dark">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="t-display t-sub footer-mark">Marisol</p>
+          <p class="t-small">Coastal Kitchen &amp; Bar</p>
+          <p class="t-small measure-narrow">Baja seafood cooked over a wood fire, in three San Diego neighborhoods.</p>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Visit</h2>
+          <ul class="footer-list">
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html#reserve">Reserve a table</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Hours</h2>
+          <ul class="footer-list">
+            <li>Mon&ndash;Thu 11am&ndash;10pm</li>
+            <li>Fri&ndash;Sat 11am&ndash;11pm</li>
+            <li>Sun 10am&ndash;9pm</li>
+            <li>Sunday brunch until 2pm</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Contact</h2>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@marisolcoastal.com">hello@marisolcoastal.com</a></li>
+            <li><a href="https://www.instagram.com/">&#64;marisolcoastal</a></li>
+            <li><a href="tel:+16195550142">(619) 555-0142</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-fine">
+        <p>&copy; 2026 Marisol Coastal Kitchen &amp; Bar</p>
+        <p>Marisol is a fictional restaurant, built as a portfolio demonstration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

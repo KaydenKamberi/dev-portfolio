@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About &mdash; Marisol Coastal Kitchen &amp; Bar</title>
+  <meta name="description" content="How Marisol started, and the chef who runs it. Baja seafood over a wood fire in San Diego since 2016.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:SOFT,WONK,opsz,wght@40,1,9..144,600;40,1,9..144,900&family=DM+Sans:wght@400;500&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Guarded so a blocked or offline CDN degrades gracefully to the
+    // custom.css design instead of throwing.
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cal: "var(--cal)",
+              sal: "var(--sal)",
+              hielo: "var(--hielo)",
+              cobalto: "var(--cobalto)",
+              tinta: "var(--tinta)",
+              chile: "var(--chile)"
+            },
+            fontFamily: {
+              display: ["Anton", "Haettenschweiler", "Arial Narrow", "sans-serif"],
+              sans: ["IBM Plex Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+            },
+            borderRadius: { DEFAULT: "0", none: "0" }
+          }
+        }
+      };
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <span class="header-sentinel" data-header-sentinel aria-hidden="true"></span>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="index.html">Marisol</a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        Menu
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="menu.html">Menu</a></li>
+          <li><a class="nav-link" href="locations.html">Locations</a></li>
+          <li><a class="nav-link" href="about.html" aria-current="page">About</a></li>
+        </ul>
+        <div class="header-contact">
+          <a class="header-phone" href="tel:+16195550142">(619) 555-0142</a>
+          <a class="btn btn-outline" href="locations.html">Order</a>
+          <a class="btn btn-accent" href="locations.html#reserve">Reserve</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap page-head-inner">
+        <h1 class="t-display t-title">About</h1>
+        <div class="page-head-body">
+          <p class="t-lead measure">
+            Marisol started with a cooler, a station wagon, and a permit problem.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap about-body">
+
+      <section class="about-section" aria-labelledby="story-heading">
+        <div class="about-head reveal">
+          <h2 class="t-display t-section" id="story-heading">How it started</h2>
+        </div>
+        <div class="about-content">
+          <div class="prose">
+            <p>
+              In 2014 Elena Sotomayor was buying rockfish and shrimp off the boats at Tuna
+              Harbor and selling ceviche out of the back of a station wagon on Prospect
+              Street, mostly to people walking up from the cove. The permits were a problem.
+              By the spring of 2016 she had a lease on a narrow room in La Jolla with a
+              marble counter, six stools, and a wood grill that was slightly too big for the
+              space.
+            </p>
+            <p>
+              The grill is still slightly too big. The menu has not changed much either:
+              whole fish over fire, tacos, and enough tequila to make a Tuesday feel like
+              something. North Park opened in 2019. Coronado opened in 2022, in a building
+              that had been a bait shop for forty years.
+            </p>
+            <p>
+              We still buy from the same three boats. When a species is not running it comes
+              off the board for a while, which is why the fish is written in chalk and
+              everything else is printed.
+            </p>
+          </div>
+          <figure class="about-figure">
+            <img src="assets/images/about-origin.jpg"
+                 alt="A cook in a red apron lifting a foil tray of food onto the counter beside an open oven."
+                 width="738" height="414" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="chef-heading">
+        <div class="about-head reveal">
+          <h2 class="t-display t-section" id="chef-heading">Elena Sotomayor</h2>
+          <p class="tile-label">Chef and owner</p>
+        </div>
+        <div class="about-content">
+          <div class="prose">
+            <p>
+              Elena grew up in Ensenada, about ninety minutes south of the La Jolla dining
+              room. She learned to break down a fish before she learned to drive, then
+              spent six years cooking in San Francisco &mdash; two of them on the grill
+              station at a Basque restaurant where, she says, she learned more about fire
+              than about food. She came back down the coast in 2013 and has not left.
+            </p>
+            <p>
+              She is behind one of the three counters most nights. If you ask her what to
+              order she will tell you the truth, and it is usually the branzino.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" aria-labelledby="fire-heading">
+        <div class="about-head reveal">
+          <h2 class="t-display t-section" id="fire-heading">What we cook on</h2>
+        </div>
+        <div class="about-content">
+          <div class="prose">
+            <p>
+              Red oak, with a little mesquite when we can get it. The grill is lit at nine in
+              the morning and burns down all day, so what the fish sits over at seven at night
+              is coals rather than flame. It is the reason the kitchen is hot and the reason
+              the branzino tastes the way it does.
+            </p>
+          </div>
+          <figure class="about-figure about-figure-feature">
+            <img src="assets/images/about-wood-fire.jpg"
+                 alt="Chicken grilling over coals on a long steel grill, with mixing bowls hanging above."
+                 width="515" height="388" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <div class="wave wave-flip" aria-hidden="true">
+    <svg viewBox="0 0 680 26" preserveAspectRatio="none" focusable="false">
+      <path d="M0,0 C56,26 112,26 170,13 C228,0 284,0 340,13 C396,26 452,26 510,13 C568,0 624,0 680,13 L680,0 Z" fill="#08333D"/>
+    </svg>
+  </div>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer field-dark">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="t-display t-sub footer-mark">Marisol</p>
+          <p class="t-small">Coastal Kitchen &amp; Bar</p>
+          <p class="t-small measure-narrow">Baja seafood cooked over a wood fire, in three San Diego neighborhoods.</p>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Visit</h2>
+          <ul class="footer-list">
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="locations.html#reserve">Reserve a table</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Hours</h2>
+          <ul class="footer-list">
+            <li>Mon&ndash;Thu 11am&ndash;10pm</li>
+            <li>Fri&ndash;Sat 11am&ndash;11pm</li>
+            <li>Sun 10am&ndash;9pm</li>
+            <li>Sunday brunch until 2pm</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Contact</h2>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@marisolcoastal.com">hello@marisolcoastal.com</a></li>
+            <li><a href="https://www.instagram.com/">&#64;marisolcoastal</a></li>
+            <li><a href="tel:+16195550142">(619) 555-0142</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-fine">
+        <p>&copy; 2026 Marisol Coastal Kitchen &amp; Bar</p>
+        <p>Marisol is a fictional restaurant, built as a portfolio demonstration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
