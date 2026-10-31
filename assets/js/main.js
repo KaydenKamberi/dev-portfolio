@@ -30,12 +30,9 @@
 
   /* ---------- Theme toggle ---------- */
   var themeToggle = document.querySelector(".theme-toggle");
-  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-
+  // Night Ink (dark) is the default; "light" is only set by this toggle
   function currentTheme() {
-    var set = root.getAttribute("data-theme");
-    if (set) return set;
-    return prefersDark && prefersDark.matches ? "dark" : "light";
+    return root.getAttribute("data-theme") === "light" ? "light" : "dark";
   }
 
   if (themeToggle) {
