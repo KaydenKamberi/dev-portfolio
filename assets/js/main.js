@@ -1,5 +1,5 @@
 /* Kayden Kamberi – portfolio
-   Mobile menu, theme toggle, lazy live previews, contact form. */
+   Mobile menu, theme toggle, lazy live previews. */
 (function () {
   "use strict";
 
@@ -92,59 +92,6 @@
     frames.forEach(function (f) { io.observe(f); });
   } else {
     frames.forEach(load);
-  }
-
-  /* ---------- Contact form (Formspree) ---------- */
-  var form = document.querySelector(".contact-form");
-
-  if (form) {
-    var status = form.querySelector(".form-status");
-    var submit = form.querySelector('button[type="submit"]');
-
-    function setStatus(msg, type) {
-      status.textContent = msg;
-      status.className = "form-status" + (type ? " is-" + type : "");
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      // Basic checks before sending
-      var firstBad = null;
-      Array.prototype.forEach.call(form.querySelectorAll("[required]"), function (el) {
-        var ok = el.value.trim() !== "" && (el.type !== "email" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
-        el.setAttribute("aria-invalid", ok ? "false" : "true");
-        if (!ok && !firstBad) firstBad = el;
-      });
-      if (firstBad) {
-        setStatus("Please fill in your name, a valid email and a few project details.", "error");
-        firstBad.focus();
-        return;
-      }
-
-      if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-        setStatus("The form isn't connected yet. Please email kaydenkamberi45@gmail.com directly.", "error");
-        return;
-      }
-
-      submit.disabled = true;
-      setStatus("Sending…");
-
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("Request failed");
-          form.reset();
-          setStatus("Thanks! Your message is on its way. I'll get back to you soon.", "success");
-        })
-        .catch(function () {
-          setStatus("Something went wrong. Please email kaydenkamberi45@gmail.com instead.", "error");
-        })
-        .then(function () { submit.disabled = false; });
-    });
   }
 
   /* ---------- Footer year ---------- */

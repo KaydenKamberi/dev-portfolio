@@ -30,18 +30,6 @@ From then on, every push to `main` updates the live site automatically within a 
 
 ---
 
-## Set up the contact form (Formspree)
-
-1. Create a free account at https://formspree.io.
-2. Click **New form**, name it (e.g. "Portfolio"), and use `kaydenkamberi45@gmail.com` as the email.
-3. Copy the form ID. It's the last part of the endpoint, e.g. `https://formspree.io/f/abcdwxyz` has the ID `abcdwxyz`.
-4. In `index.html`, find `YOUR_FORM_ID` and replace it with your ID.
-5. Push, then send yourself a test message from the live site. Formspree asks you to confirm the first submission by email.
-
-Until the ID is replaced, the form shows a message asking visitors to email you directly instead.
-
----
-
 ## Adding or updating a demo
 
 Each demo lives in its own folder under `demo/`, with its own `index.html`:
@@ -67,7 +55,7 @@ Fix anything it lists, then run it again until it says "All clear."
 ```
 index.html              The whole portfolio (one page)
 assets/css/style.css    Styles, theme colors, responsive layout
-assets/js/main.js       Mobile menu, light/dark toggle, live previews, contact form
+assets/js/main.js       Mobile menu, light/dark toggle, live previews
 assets/img/og-image.png Image shown when the link is shared on social media
 favicon.svg             Browser tab icon (+ favicon-32.png, apple-touch-icon.png)
 robots.txt, sitemap.xml Search engine files
