@@ -94,6 +94,59 @@
     frames.forEach(load);
   }
 
+  /* ---------- Copy email address ----------
+     Email links only work if the visitor has an email app set up,
+     so this gives everyone a way to grab the address. */
+  var copyBtn = document.querySelector(".copy-btn");
+  var copyStatus = document.querySelector(".copy-status");
+
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    return ok ? Promise.resolve() : Promise.reject();
+  }
+
+  if (copyBtn) {
+    copyBtn.hidden = false;
+    var resetTimer;
+    copyBtn.addEventListener("click", function () {
+      var text = copyBtn.getAttribute("data-copy");
+      var copy = navigator.clipboard && window.isSecureContext
+        ? navigator.clipboard.writeText(text).catch(function () { return fallbackCopy(text); })
+        : fallbackCopy(text);
+      copy.then(function () {
+        copyBtn.textContent = "Copied!";
+        copyBtn.classList.add("is-copied");
+        if (copyStatus) copyStatus.textContent = "Email address copied";
+      }, function () {
+        // Copy blocked: select the address so the visitor can copy it by hand
+        var link = document.querySelector(".contact-email");
+        if (link && window.getSelection) {
+          var range = document.createRange();
+          range.selectNodeContents(link);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+        copyBtn.textContent = "Press Ctrl+C";
+      });
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () {
+        copyBtn.textContent = "Copy";
+        copyBtn.classList.remove("is-copied");
+        if (copyStatus) copyStatus.textContent = "";
+      }, 2000);
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = new Date().getFullYear();
