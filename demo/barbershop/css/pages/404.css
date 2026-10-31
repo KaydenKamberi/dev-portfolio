@@ -1,0 +1,23 @@
+/* 404 page - Mistral (Phase 2 polish: Claude Code) */
+
+.page-hero--404 {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+  min-height: 70svh;
+  text-align: center;
+}
+
+.page-hero--404 .container {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+}
+
+.page-hero--404 h1 {
+  max-width: 14ch;
+}
+
+.page-hero--404 .page-hero__lead {
+  margin-top: 0;
+}

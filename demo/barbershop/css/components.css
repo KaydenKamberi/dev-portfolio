@@ -1,0 +1,1124 @@
+/* Palm & Blade shared components (PRD Section 5.3).
+   Owner: Claude Code. Page CSS may add page-scoped modifiers but must not redefine these. */
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--space-8);
+}
+
+@media (min-width: 1100px) {
+  .section {
+    padding-block: var(--space-9);
+  }
+}
+
+.section--stucco {
+  background-color: var(--color-stucco);
+  color: var(--color-mesquite);
+}
+
+.section--light {
+  background-color: var(--color-stucco-light);
+  color: var(--color-mesquite);
+}
+
+.section--dark {
+  background-color: var(--color-mesquite);
+  color: var(--color-stucco-light);
+}
+
+.section--adobe {
+  background-color: var(--color-rust);
+  color: var(--color-stucco-light);
+}
+
+.section--dark :is(h1, h2),
+.section--adobe :is(h1, h2) {
+  color: var(--color-stucco-light);
+}
+
+.section--dark :is(h3, h4),
+.section--adobe :is(h3, h4) {
+  color: var(--color-stucco-light);
+}
+
+.section--dark a:not(.btn),
+.section--adobe a:not(.btn) {
+  color: var(--color-stucco-light);
+}
+
+.section--dark :focus-visible,
+.section--adobe :focus-visible {
+  outline-color: var(--color-marigold);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--color-mesquite-soft);
+  max-width: 52ch;
+}
+
+.section--dark .lead,
+.section--adobe .lead {
+  color: var(--color-stucco-light);
+}
+
+/* ==========================================================================
+   Accessibility helpers
+   ========================================================================== */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 1100;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-mesquite);
+  color: var(--color-stucco-light);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-color: var(--color-marigold);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  --btn-bg: var(--color-rust);
+  --btn-fg: var(--color-stucco-light);
+  --btn-border: var(--color-rust);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-warm);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn:focus-visible {
+  border-radius: var(--radius-pill);
+}
+
+.btn--primary {
+  --btn-bg: var(--color-rust);
+  --btn-fg: var(--color-stucco-light);
+  --btn-border: var(--color-rust);
+}
+
+.btn--primary:hover {
+  --btn-bg: var(--color-mesquite);
+  --btn-border: var(--color-mesquite);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-rust);
+  --btn-border: currentColor;
+}
+
+.btn--ghost:hover {
+  --btn-bg: var(--color-rust);
+  --btn-fg: var(--color-stucco-light);
+  --btn-border: var(--color-rust);
+}
+
+.section--dark .btn--ghost,
+.section--adobe .btn--ghost {
+  --btn-fg: var(--color-stucco-light);
+}
+
+.section--dark .btn--ghost:hover,
+.section--adobe .btn--ghost:hover {
+  --btn-bg: var(--color-stucco-light);
+  --btn-fg: var(--color-mesquite);
+  --btn-border: var(--color-stucco-light);
+}
+
+.btn--light {
+  --btn-bg: var(--color-stucco-light);
+  --btn-fg: var(--color-rust);
+  --btn-border: var(--color-stucco-light);
+}
+
+.btn--light:hover {
+  --btn-bg: var(--color-marigold);
+  --btn-fg: var(--color-mesquite);
+  --btn-border: var(--color-marigold);
+  box-shadow: var(--shadow-lift);
+}
+
+.btn--sm {
+  min-height: 40px;
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.btn--lg {
+  min-height: 56px;
+  padding: var(--space-4) var(--space-7);
+  font-size: var(--text-lg);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Card, chip, stars
+   ========================================================================== */
+.card {
+  background-color: var(--color-stucco-light);
+  color: var(--color-mesquite);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-warm);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-agave);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-agave-a15);
+  color: var(--color-mesquite);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.chip,
+button.chip {
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+a.chip:hover,
+button.chip:hover {
+  background-color: var(--color-agave);
+  color: var(--color-stucco-light);
+}
+
+button.chip {
+  border-width: 1px;
+}
+
+.chip[aria-pressed="true"],
+.chip[aria-current="true"],
+.chip.is-active {
+  background-color: var(--color-mesquite);
+  border-color: var(--color-mesquite);
+  color: var(--color-stucco-light);
+}
+
+.section--dark .chip {
+  color: var(--color-stucco-light);
+  background-color: var(--color-stucco-light-a15);
+}
+
+.section--dark a.chip:hover,
+.section--dark button.chip:hover {
+  background-color: var(--color-stucco-light);
+  border-color: var(--color-stucco-light);
+  color: var(--color-mesquite);
+}
+
+.section--dark .chip[aria-pressed="true"],
+.section--dark .chip[aria-current="true"],
+.section--dark .chip.is-active {
+  background-color: var(--color-marigold);
+  border-color: var(--color-marigold);
+  color: var(--color-mesquite);
+}
+
+.section--dark .chip:focus-visible {
+  border-radius: var(--radius-pill);
+}
+
+/* Usage: <span class="stars" role="img" aria-label="5 out of 5 stars"></span> */
+.stars {
+  display: inline-flex;
+  gap: 0.1em;
+  color: var(--color-marigold);
+  font-size: var(--text-lg);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.stars::before {
+  content: "\2605\2605\2605\2605\2605";
+}
+
+/* If markup already contains star glyphs or SVGs, don't double up */
+.stars:not(:empty)::before {
+  content: none;
+}
+
+.stars > svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Arch frame
+   Usage: <div class="arch"><img src="..." alt="..." width="900" height="1200"></div>
+   Set --arch-ratio on the wrapper to change the shape (default 4 / 5).
+   ========================================================================== */
+.arch {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--arch-ratio, 4 / 5);
+  /* Huge top radii collapse to a perfect semicircle; bottom corners stay soft */
+  border-radius: 999px 999px var(--radius-md) var(--radius-md);
+  background-color: var(--color-stucco-light);
+  isolation: isolate;
+}
+
+.arch > img,
+.arch > picture,
+.arch > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Thin inset line, like plaster trim around a mission window */
+.arch::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-2);
+  border: 1px solid var(--color-stucco-light);
+  border-radius: inherit;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Wave divider
+   Place between two sections that change background colour. The wave is
+   filled with the colour of the section BELOW; the divider background is the
+   section ABOVE. Pick the colours with the modifiers.
+
+   <div class="divider-wave divider-wave--to-dark" aria-hidden="true">
+     <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false">
+       <path d="M0 48 C 240 8 480 8 720 40 S 1200 80 1440 32 V 80 H 0 Z"/>
+     </svg>
+   </div>
+
+   Background (above):  --from-stucco (default) / --from-light / --from-dark / --from-adobe
+   Fill (below):        --to-stucco / --to-light (default) / --to-dark / --to-adobe
+   .divider-wave--flip  flips vertically (wave hangs down from the section above);
+                        keep --from/--to meaning above/below, colours swap automatically.
+   ========================================================================== */
+.divider-wave {
+  --wave-from: var(--color-stucco);
+  --wave-to: var(--color-stucco-light);
+  display: block;
+  position: relative;
+  z-index: 1;
+  height: clamp(36px, 6vw, 80px);
+  margin-block: -1px;
+  background-color: var(--wave-from);
+  color: var(--wave-to);
+  line-height: 0;
+  pointer-events: none;
+}
+
+.divider-wave > svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.divider-wave--flip > svg {
+  transform: scaleY(-1);
+}
+
+.divider-wave--from-stucco { --wave-from: var(--color-stucco); }
+.divider-wave--from-light  { --wave-from: var(--color-stucco-light); }
+.divider-wave--from-dark   { --wave-from: var(--color-mesquite); }
+.divider-wave--from-adobe  { --wave-from: var(--color-rust); }
+.divider-wave--to-stucco   { --wave-to: var(--color-stucco); }
+.divider-wave--to-light    { --wave-to: var(--color-stucco-light); }
+.divider-wave--to-dark     { --wave-to: var(--color-mesquite); }
+.divider-wave--to-adobe    { --wave-to: var(--color-rust); }
+
+.divider-wave--flip {
+  background-color: var(--wave-to);
+  color: var(--wave-from);
+}
+
+/* ==========================================================================
+   Sticker badge
+   <div class="sticker"><span class="sticker__text">Walk-ins welcome ✦ El Cajon ✦ Since 2014 ✦</span></div>
+   main.js wraps the text around the edge with an SVG textPath and keeps a
+   screen-reader copy. Optional: <span class="sticker__center">…</span> (e.g. an icon).
+   Set --sticker-size to resize (default 132px).
+   ========================================================================== */
+.sticker {
+  --sticker-size: 132px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--sticker-size);
+  height: var(--sticker-size);
+  border-radius: 50%;
+  background-color: var(--color-marigold);
+  color: var(--color-mesquite);
+  box-shadow: var(--shadow-warm);
+  text-align: center;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.2;
+  user-select: none;
+}
+
+/* Fallback (no JS): plain text inside the circle */
+.sticker__text {
+  padding: var(--space-4);
+}
+
+.sticker__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sticker__ring text {
+  fill: currentColor;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.sticker__center {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42%;
+  height: 42%;
+  border-radius: 50%;
+  background-color: var(--color-rust);
+  color: var(--color-stucco-light);
+}
+
+.sticker__center svg {
+  width: 60%;
+  height: 60%;
+}
+
+.sticker.is-enhanced {
+  border: 2px dashed var(--color-rust-a25);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sticker.is-enhanced .sticker__ring {
+    animation: sticker-spin 22s linear infinite;
+  }
+}
+
+@keyframes sticker-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Page hero (Services, Barbers, Book, 404)
+   ========================================================================== */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-8) var(--space-7);
+  background:
+    radial-gradient(120% 90% at 100% 0%, var(--color-marigold-a60) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-stucco-light) 0%, var(--color-stucco) 100%);
+  isolation: isolate;
+}
+
+@media (min-width: 1100px) {
+  .page-hero {
+    padding-block: var(--space-9) var(--space-8);
+  }
+}
+
+/* Palm shadow, falling across the top-right corner */
+.page-hero::before,
+.page-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--color-mesquite);
+  -webkit-mask: var(--palm-frond) center / contain no-repeat;
+  mask: var(--palm-frond) center / contain no-repeat;
+  opacity: 0.11;
+  transform-origin: 50% 50%;
+}
+
+/* Rotated ~180° so the frond hangs from the top-right corner */
+.page-hero::before {
+  top: -22%;
+  right: -12%;
+  width: min(85vw, 560px);
+  aspect-ratio: 1;
+  transform: rotate(-172deg);
+}
+
+.page-hero::after {
+  top: -38%;
+  right: 22%;
+  width: min(55vw, 380px);
+  aspect-ratio: 1;
+  opacity: 0.08;
+  transform: rotate(160deg) scaleX(-1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero::before {
+    animation: page-hero-sway-a 11s ease-in-out infinite alternate;
+  }
+
+  .page-hero::after {
+    animation: page-hero-sway-b 13s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes page-hero-sway-a {
+  from { transform: rotate(-175deg); }
+  to   { transform: rotate(-167deg); }
+}
+
+@keyframes page-hero-sway-b {
+  from { transform: rotate(163deg) scaleX(-1); }
+  to   { transform: rotate(155deg) scaleX(-1); }
+}
+
+.page-hero h1 {
+  max-width: 16ch;
+}
+
+.page-hero__lead {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--color-mesquite-soft);
+  max-width: 48ch;
+}
+
+/* ==========================================================================
+   CTA band
+   ========================================================================== */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-8);
+  background-color: var(--color-rust);
+  color: var(--color-stucco-light);
+  text-align: center;
+  isolation: isolate;
+}
+
+@media (min-width: 1100px) {
+  .cta-band {
+    padding-block: var(--space-9);
+  }
+}
+
+/* Low sun glow behind the heading */
+.cta-band::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -60%;
+  width: min(120vw, 900px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--color-marigold-a35), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.cta-band .container {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-6);
+}
+
+.cta-band h2 {
+  color: var(--color-stucco-light);
+  font-size: var(--text-3xl);
+  max-width: 14ch;
+}
+
+.cta-band :focus-visible {
+  outline-color: var(--color-marigold);
+}
+
+/* ==========================================================================
+   Accordion
+   Either <details class="accordion"> or a wrapper .accordion around several
+   <details>. Optional inner classes: .accordion__summary / .accordion__content.
+   ========================================================================== */
+.accordion:is(details),
+.accordion > details {
+  border-bottom: 1px solid var(--color-mesquite-a15);
+}
+
+.accordion:is(details):first-of-type,
+.accordion > details:first-of-type {
+  border-top: 1px solid var(--color-mesquite-a15);
+}
+
+.accordion summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-1);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  list-style: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary:hover {
+  color: var(--color-rust);
+}
+
+/* Plus that turns into a minus */
+.accordion summary::after {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background:
+    linear-gradient(currentColor, currentColor) center / 12px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 2px 12px no-repeat,
+    var(--color-rust-a10);
+  color: var(--color-rust);
+  transition: transform var(--dur-med) var(--ease-spring), background-size var(--dur-med) var(--ease-out);
+}
+
+.accordion details[open] > summary::after,
+details.accordion[open] > summary::after {
+  transform: rotate(180deg);
+  background-size: 12px 2px, 2px 0, auto;
+}
+
+.accordion summary + *,
+.accordion__content {
+  padding: 0 var(--space-1) var(--space-5);
+  color: var(--color-mesquite-soft);
+}
+
+/* Height animation where supported (::details-content + interpolate-size) */
+@media (prefers-reduced-motion: no-preference) {
+  .accordion details::details-content,
+  details.accordion::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size var(--dur-med) var(--ease-out),
+      content-visibility var(--dur-med) allow-discrete;
+  }
+
+  .accordion details[open]::details-content,
+  details.accordion[open]::details-content {
+    block-size: auto;
+  }
+
+  /* Content fade/slide works everywhere */
+  .accordion details[open] > summary + *,
+  details.accordion[open] > summary + * {
+    animation: accordion-in var(--dur-med) var(--ease-out);
+  }
+}
+
+@keyframes accordion-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* ==========================================================================
+   Logo
+   ========================================================================== */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-rust);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo__mark {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+}
+
+.logo__text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateY(0.06em);
+}
+
+.logo--light {
+  color: var(--color-stucco-light);
+}
+
+/* ==========================================================================
+   Site header + navigation (5.2.1)
+   Default: sticky solid stucco. On Home it floats transparently over the
+   hero until .is-scrolled is set by main.js.
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  height: var(--header-h);
+  isolation: isolate;
+}
+
+/* Background lives on a pseudo-element so backdrop-filter doesn't become the
+   containing block for the fixed mobile menu inside the header */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-stucco-a85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition:
+    opacity var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) var(--ease-out);
+}
+
+[data-page="home"] .site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+}
+
+[data-page="home"] .site-header::before {
+  opacity: 0;
+}
+
+.site-header.is-scrolled::before,
+[data-page="home"] .site-header.is-scrolled::before {
+  opacity: 1;
+  background-color: var(--color-stucco);
+  box-shadow: var(--shadow-warm);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.site-header .logo {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Toggle (mobile) --- */
+.nav-toggle {
+  position: relative;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  width: 48px;
+  height: 48px;
+  margin-right: calc(var(--space-2) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-mesquite);
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition: transform var(--dur-med) var(--ease-spring);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-of-type(2) {
+  transform: translateY(4.5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:last-of-type {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* --- Nav list --- */
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--space-2);
+  color: var(--color-mesquite);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--color-rust);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.site-nav__link:hover {
+  color: var(--color-rust);
+  text-decoration: none;
+}
+
+.site-nav__link:hover::after,
+.site-nav__link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.site-nav__link[aria-current="page"] {
+  color: var(--color-rust);
+  font-weight: 600;
+}
+
+/* Mobile: full-screen menu (only when JS can open it) */
+@media (max-width: 767.98px) {
+  .js .nav-toggle {
+    display: inline-flex;
+  }
+
+  .js .site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--header-h) + var(--space-6)) var(--space-5) var(--space-7);
+    background:
+      radial-gradient(90% 60% at 100% 0%, var(--color-marigold-a35), transparent 70%),
+      var(--color-stucco);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity var(--dur-med) var(--ease-out),
+      visibility 0s linear var(--dur-med);
+  }
+
+  .js .site-nav.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity var(--dur-med) var(--ease-out), visibility 0s;
+  }
+
+  .js .site-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .js .site-nav__link {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-adobe);
+  }
+
+  .js .site-nav__link[aria-current="page"] {
+    color: var(--color-rust);
+    font-weight: 400;
+  }
+
+  .js .site-nav__list .btn {
+    margin-top: var(--space-4);
+    min-height: 56px;
+    padding: var(--space-4) var(--space-7);
+    font-size: var(--text-lg);
+  }
+
+  .js .site-nav__list > li {
+    transition:
+      opacity var(--dur-med) var(--ease-out),
+      transform var(--dur-med) var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms + 80ms);
+  }
+
+  .js .site-nav:not(.is-open) .site-nav__list > li {
+    opacity: 0;
+    transform: translateY(24px);
+    transition-delay: 0ms;
+  }
+}
+
+@media (max-width: 767.98px) and (prefers-reduced-motion: reduce) {
+  .js .site-nav__list > li,
+  .js .site-nav:not(.is-open) .site-nav__list > li {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* No-JS mobile fallback: compact inline nav */
+@media (max-width: 767.98px) {
+  html:not(.js) .site-header {
+    height: auto;
+    padding-block: var(--space-3);
+  }
+
+  html:not(.js) .site-header__inner {
+    flex-wrap: wrap;
+  }
+
+  html:not(.js) [data-page="home"] .site-header {
+    position: sticky;
+  }
+
+  html:not(.js) [data-page="home"] .site-header::before {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Site footer (5.2.2)
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  padding-block: var(--space-8) var(--space-6);
+  background-color: var(--color-mesquite);
+  color: var(--color-stucco-light);
+  font-size: var(--text-base);
+}
+
+.site-footer a:not(.btn):not(.logo) {
+  color: var(--color-stucco-light);
+}
+
+.site-footer a:not(.btn):not(.logo):hover {
+  color: var(--color-marigold);
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--color-marigold);
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .site-footer__grid {
+    grid-template-columns: 1.3fr 1fr 1.2fr 1fr;
+  }
+}
+
+.site-footer__grid > div {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+}
+
+.site-footer__brand p {
+  color: var(--color-stucco-light);
+  opacity: 0.85;
+}
+
+.site-footer__brand .logo__text {
+  font-size: var(--text-xl);
+}
+
+.site-footer__heading {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-marigold);
+}
+
+.site-footer .btn {
+  justify-self: start;
+  margin-top: var(--space-2);
+}
+
+.site-footer__demo {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-stucco-light-a15);
+  font-size: var(--text-sm);
+  color: var(--color-stucco-light);
+  opacity: 0.75;
+  max-width: none;
+}
+
+/* ==========================================================================
+   Hours list (filled by main.js from HOURS)
+   ========================================================================== */
+.hours-list {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.hours-list__item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-1) var(--space-2);
+  margin-inline: calc(var(--space-2) * -1);
+  border-radius: var(--radius-sm);
+}
+
+.hours-list__day {
+  font-weight: 500;
+}
+
+.hours-list__time {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.hours-list__item.is-closed .hours-list__time {
+  opacity: 0.7;
+}
+
+.hours-list__item.is-today {
+  background-color: var(--color-marigold);
+  color: var(--color-mesquite);
+  font-weight: 600;
+}
+
+/* Full contrast on the highlight, even when today is a closed day */
+.hours-list__item.is-today .hours-list__time {
+  opacity: 1;
+}
+
+.hours-list__badge {
+  margin-left: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}

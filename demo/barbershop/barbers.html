@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Meet the barbers | Palm &amp; Blade Barbershop, El Cajon</title>
+  <meta name="description" content="Get to know our talented team of barbers. Each brings their own style and specialty to Palm &amp; Blade.">
+  <meta name="theme-color" content="#F3E6D8">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- fonts (Section 4.3) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/barbers.css">
+</head>
+<body data-page="barbers">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Palm & Blade home">
+        <img class="logo__mark" src="assets/logo.svg" alt="" width="36" height="36">
+        <span class="logo__text">Palm &amp; Blade</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open menu</span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" data-nav aria-label="Main">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" data-nav-link="home">Home</a></li>
+          <li><a class="site-nav__link" href="services.html" data-nav-link="services">Services</a></li>
+          <li><a class="site-nav__link" href="barbers.html" data-nav-link="barbers">Barbers</a></li>
+          <li><a class="btn btn--primary btn--sm" href="book.html" data-nav-link="book">Book a chair</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Meet the barbers</h1>
+        <p class="page-hero__lead">Four chairs, four styles, one shop that feels like home.</p>
+      </div>
+    </section>
+
+    <!-- Barber cards (rendered from BARBERS) -->
+    <section class="section section--light crew-section" aria-label="Our barbers">
+      <div class="container">
+        <ul class="crew-grid" role="list" data-barbers></ul>
+      </div>
+    </section>
+
+    <div class="divider-wave divider-wave--from-light divider-wave--to-dark" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false"><path d="M0 48 C 240 8 480 8 720 40 S 1200 80 1440 32 V 80 H 0 Z"/></svg>
+    </div>
+
+    <!-- Recent work gallery -->
+    <section class="section section--dark work" aria-labelledby="work-title">
+      <div class="container">
+        <div class="work__head">
+          <h2 id="work-title">Recent work</h2>
+          <div class="work__filters" role="group" aria-label="Filter by barber" data-gallery-filters></div>
+        </div>
+        <ul class="work__grid" role="list" data-gallery></ul>
+        <p class="sr-only" aria-live="polite" data-gallery-status></p>
+      </div>
+    </section>
+
+    <div class="divider-wave divider-wave--from-dark divider-wave--to-stucco divider-wave--flip" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false"><path d="M0 48 C 240 8 480 8 720 40 S 1200 80 1440 32 V 80 H 0 Z"/></svg>
+    </div>
+
+    <!-- Hiring note -->
+    <section class="hiring" aria-label="We're hiring">
+      <div class="container">
+        <p class="hiring__note">Are you a barber who loves this vibe? Call <a href="tel:+16195550147">(619) 555-0147</a>.</p>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <h2>Your chair's waiting.</h2>
+        <a class="btn btn--light btn--lg" href="book.html">Book a chair</a>
+      </div>
+    </section>
+
+    <!-- Before/after lightbox -->
+    <dialog class="lightbox" aria-labelledby="lightbox-title" data-lightbox>
+      <div class="lightbox__head">
+        <div>
+          <h2 class="lightbox__title" id="lightbox-title" data-lightbox-title></h2>
+          <p class="lightbox__by" data-lightbox-by></p>
+        </div>
+        <button class="lightbox__close" type="button" data-lightbox-close>
+          <span class="sr-only">Close</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="lightbox__pair">
+        <figure class="lightbox__shot">
+          <img data-lightbox-before src="" alt="" width="1000" height="1000">
+          <figcaption>Before</figcaption>
+        </figure>
+        <figure class="lightbox__shot">
+          <img data-lightbox-after src="" alt="" width="1000" height="1000">
+          <figcaption>After</figcaption>
+        </figure>
+      </div>
+      <div class="lightbox__nav">
+        <button class="btn btn--ghost btn--sm" type="button" data-lightbox-prev>Previous</button>
+        <span class="lightbox__count" data-lightbox-count></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-lightbox-next>Next</button>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo logo--light" href="index.html">
+          <img class="logo__mark" src="assets/logo.svg" alt="" width="36" height="36">
+          <span class="logo__text">Palm &amp; Blade</span>
+        </a>
+        <p>Sharp cuts, slow afternoons.</p>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Visit</h2>
+        <address>1867 Sunset Mesa Dr<br>El Cajon, CA 92020</address>
+        <p><a href="tel:+16195550147">(619) 555-0147</a><br>
+           <a href="mailto:hello@palmandblade.com">hello@palmandblade.com</a></p>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Hours</h2>
+        <ul class="hours-list" data-hours-list></ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Follow</h2>
+        <p><a href="#">Instagram @palmandblade</a></p>
+        <a class="btn btn--light btn--sm" href="book.html">Book a chair</a>
+      </div>
+    </div>
+    <p class="site-footer__demo container">Palm &amp; Blade is a fictional shop. Demo site designed and built by Kayden Kamberi.</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/pages/barbers.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Services &amp; prices | Palm &amp; Blade Barbershop, El Cajon</title>
+  <meta name="description" content="See our full menu of cuts, beard grooming, and combo services with transparent pricing. Every service includes a hot towel and zero rush.">
+  <meta name="theme-color" content="#F3E6D8">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/services.css">
+</head>
+<body data-page="services">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Palm & Blade home">
+        <img class="logo__mark" src="assets/logo.svg" alt="" width="36" height="36">
+        <span class="logo__text">Palm &amp; Blade</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open menu</span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" data-nav aria-label="Main">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" data-nav-link="home">Home</a></li>
+          <li><a class="site-nav__link" href="services.html" data-nav-link="services">Services</a></li>
+          <li><a class="site-nav__link" href="barbers.html" data-nav-link="barbers">Barbers</a></li>
+          <li><a class="btn btn--primary btn--sm" href="book.html" data-nav-link="book">Book a chair</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Services &amp; prices</h1>
+        <p class="page-hero__lead">Every service comes with a hot towel, a cold drink, and zero rush.</p>
+      </div>
+    </section>
+
+    <div class="services-nav">
+      <div class="container">
+        <nav class="services-nav__list" aria-label="Service categories" data-services-nav>
+          <a class="chip services-nav__link" href="#cuts" data-category="cuts">Cuts</a>
+          <a class="chip services-nav__link" href="#beard" data-category="beard">Beard &amp; shave</a>
+          <a class="chip services-nav__link" href="#combos" data-category="combos">Combos</a>
+          <a class="chip services-nav__link" href="#addons" data-category="addons">Add-ons</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="services-menu section section--light" aria-label="Menu">
+      <div class="container">
+        <div class="services-menu__categories" data-services-menu></div>
+      </div>
+    </section>
+
+    <section class="what-to-expect section section--stucco">
+      <div class="container">
+        <h2>What to expect</h2>
+        <ol class="what-to-expect__steps">
+          <li class="what-to-expect__step">
+            <span class="what-to-expect__number">1</span>
+            <span>Book online or walk in</span>
+          </li>
+          <li class="what-to-expect__step">
+            <span class="what-to-expect__number">2</span>
+            <span>Grab a cold water and relax</span>
+          </li>
+          <li class="what-to-expect__step">
+            <span class="what-to-expect__number">3</span>
+            <span>Leave looking sharp</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="services-faq section section--light">
+      <div class="container">
+        <h2>Frequently asked</h2>
+        <div class="services-faq__list" data-services-faq></div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <h2>Your chair's waiting.</h2>
+        <a class="btn btn--light btn--lg" href="book.html">Book a chair</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo logo--light" href="index.html">
+          <img class="logo__mark" src="assets/logo.svg" alt="" width="36" height="36">
+          <span class="logo__text">Palm &amp; Blade</span>
+        </a>
+        <p>Sharp cuts, slow afternoons.</p>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Visit</h2>
+        <address>1867 Sunset Mesa Dr<br>El Cajon, CA 92020</address>
+        <p><a href="tel:+16195550147">(619) 555-0147</a><br>
+           <a href="mailto:hello@palmandblade.com">hello@palmandblade.com</a></p>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Hours</h2>
+        <ul class="hours-list" data-hours-list></ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Follow</h2>
+        <p><a href="#">Instagram @palmandblade</a></p>
+        <a class="btn btn--light btn--sm" href="book.html">Book a chair</a>
+      </div>
+    </div>
+    <p class="site-footer__demo container">Palm &amp; Blade is a fictional shop. Demo site designed and built by Kayden Kamberi.</p>
+  </footer>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/pages/services.js"></script>
+</body>
+</html>

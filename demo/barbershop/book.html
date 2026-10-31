@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Book a chair | Palm &amp; Blade Barbershop, El Cajon</title>
+  <meta name="description" content="Reserve your appointment online. Choose your service, barber, and time in just a few clicks.">
+  <meta name="theme-color" content="#F3E6D8">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- fonts (Section 4.3) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/book.css">
+</head>
+<body data-page="book">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Palm & Blade home">
+        <img class="logo__mark" src="assets/logo.svg" alt="" width="36" height="36">
+        <span class="logo__text">Palm &amp; Blade</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open menu</span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" data-nav aria-label="Main">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" data-nav-link="home">Home</a></li>
+          <li><a class="site-nav__link" href="services.html" data-nav-link="services">Services</a></li>
+          <li><a class="site-nav__link" href="barbers.html" data-nav-link="barbers">Barbers</a></li>
+          <li><a class="btn btn--primary btn--sm" href="book.html" data-nav-link="book">Book a chair</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero page-hero--short">
+      <div class="container">
+        <h1>Book a chair</h1>
+        <p class="page-hero__lead">Takes about a minute.</p>
+      </div>
+    </section>
+
+    <section class="section section--light booking" aria-label="Booking">
+      <div class="container">
+        <noscript>
+          <p class="booking__noscript">Online booking needs JavaScript turned on. You can always call us at <a href="tel:+16195550147">(619) 555-0147</a> and we'll find you a chair.</p>
+        </noscript>
+
+        <div class="booking__flow" data-flow hidden>
+          <!-- Progress -->
+          <div class="progress">
+            <ol class="progress__list" aria-label="Booking steps">
+              <li class="progress__step" data-progress-step="service"><span class="progress__dot" aria-hidden="true">1</span><span class="progress__label">Service</span></li>
+              <li class="progress__step" data-progress-step="barber"><span class="progress__dot" aria-hidden="true">2</span><span class="progress__label">Barber</span></li>
+              <li class="progress__step" data-progress-step="time"><span class="progress__dot" aria-hidden="true">3</span><span class="progress__label">Time</span></li>
+              <li class="progress__step" data-progress-step="details"><span class="progress__dot" aria-hidden="true">4</span><span class="progress__label">Details</span></li>
+              <li class="progress__step" data-progress-step="confirm"><span class="progress__dot" aria-hidden="true">5</span><span class="progress__label">Confirm</span></li>
+            </ol>
+            <span class="progress__track" aria-hidden="true"><span class="progress__fill" data-progress-fill></span></span>
+          </div>
+
+          <div class="booking__layout">
+            <form class="booking__form" data-booking-form novalidate>
+              <!-- 1. Service -->
+              <section class="book-step" data-step="service" aria-labelledby="step-service">
+                <h2 class="book-step__title" id="step-service" tabindex="-1">Pick a service</h2>
+                <fieldset class="book-step__group">
+                  <legend class="sr-only">Service</legend>
+                  <div class="option-groups" data-service-options></div>
+                </fieldset>
+                <fieldset class="book-step__group addons">
+                  <legend class="book-step__subtitle">Add-ons <span class="book-step__hint">(optional)</span></legend>
+                  <div class="option-grid option-grid--addons" data-addon-options></div>
+                </fieldset>
+              </section>
+
+              <!-- 2. Barber -->
+              <section class="book-step" data-step="barber" aria-labelledby="step-barber" hidden>
+                <h2 class="book-step__title" id="step-barber" tabindex="-1">Choose your barber</h2>
+                <fieldset class="book-step__group">
+                  <legend class="sr-only">Barber</legend>
+                  <div class="option-grid option-grid--barbers" data-barber-options></div>
+                </fieldset>
+              </section>
+
+              <!-- 3. Date & time -->
+              <section class="book-step" data-step="time" aria-labelledby="step-time" hidden>
+                <h2 class="book-step__title" id="step-time" tabindex="-1">Pick a day and time</h2>
+                <fieldset class="book-step__group">
+                  <legend class="book-step__subtitle">Day</legend>
+                  <div class="day-strip" data-day-options></div>
+                </fieldset>
+                <fieldset class="book-step__group">
+                  <legend class="book-step__subtitle" data-time-legend>Time</legend>
+                  <div class="time-grid" data-time-options></div>
+                  <p class="book-step__note" data-time-note aria-live="polite"></p>
+                </fieldset>
+              </section>
+
+              <!-- 4. Details -->
+              <section class="book-step" data-step="details" aria-labelledby="step-details" hidden>
+                <h2 class="book-step__title" id="step-details" tabindex="-1">Your details</h2>
+                <div class="fields">
+                  <div class="field" data-field="name">
+                    <label class="field__label" for="f-name">Name</label>
+                    <input class="field__input" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
+                    <p class="field__error" id="f-name-error" data-error></p>
+                  </div>
+                  <div class="field" data-field="phone">
+                    <label class="field__label" for="f-phone">Phone</label>
+                    <input class="field__input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(619) 555-0147" required aria-describedby="f-phone-error">
+                    <p class="field__error" id="f-phone-error" data-error></p>
+                  </div>
+                  <div class="field field--wide" data-field="email">
+                    <label class="field__label" for="f-email">Email</label>
+                    <input class="field__input" id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-error">
+                    <p class="field__error" id="f-email-error" data-error></p>
+                  </div>
+                  <div class="field field--wide" data-field="notes">
+                    <label class="field__label" for="f-notes">Anything we should know? <span class="book-step__hint">(optional)</span></label>
+                    <textarea class="field__input field__input--area" id="f-notes" name="notes" rows="3"></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 5. Confirm -->
+              <section class="book-step" data-step="confirm" aria-labelledby="step-confirm" hidden>
+                <h2 class="book-step__title" id="step-confirm" tabindex="-1">Look good?</h2>
+                <dl class="review" data-review></dl>
+              </section>
+
+              <!-- Actions: inline on desktop, a sticky bar on mobile -->
+              <div class="booking__actions" data-actions>
+                <button class="booking__total" type="button" aria-expanded="false" aria-controls="booking-summary" data-summary-toggle>
+                  <span class="booking__total-label">Total</span>
+                  <span class="booking__total-value"><strong data-total-price>$0</strong> <span data-total-time></span></span>
+                  <span class="sr-only">, show booking summary</span>
+                </button>
+                <button class="btn btn--ghost booking__back" type="button" data-back>Back</button>
+                <button class="btn btn--primary booking__next" type="submit" data-next aria-describedby="next-hint">Continue</button>
+                <p class="sr-only" id="next-hint" data-next-hint></p>
+              </div>
+            </form>
+
+            <aside class="summary" id="booking-summary" aria-labelledby="summary-title" data-summary>
+              <div class="summary__head">
+                <h2 class="summary__title" id="summary-title">Your booking</h2>
+                <button class="summary__close" type="button" data-summary-close>
+                  <span class="sr-only">Hide summary</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+                </button>
+              </div>
+              <dl class="summary__list">
+                <div class="summary__row" data-sum-row="service"><dt>Service</dt><dd data-sum="service">Not picked yet</dd></div>
+                <div class="summary__row" data-sum-row="addons"><dt>Add-ons</dt><dd data-sum="addons">None</dd></div>
+                <div class="summary__row" data-sum-row="barber"><dt>Barber</dt><dd data-sum="barber">Not picked yet</dd></div>
+                <div class="summary__row" data-sum-row="when"><dt>When</dt><dd data-sum="when">Not picked yet</dd></div>
+              </dl>
+              <div class="summary__total" data-sum-row="total">
+                <span>Total</span>
+                <span><strong class="summary__price" data-sum="price">$0</strong> <span class="summary__time" data-sum="time"></span></span>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Confirmation (the payoff) -->
+        <div class="confirmation" data-confirmation hidden>
+          <div class="confirmation__mark" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <circle class="confirmation__circle" cx="60" cy="60" r="52" pathLength="1"/>
+              <path class="confirmation__check" d="M37 62 L53 78 L84 44" pathLength="1"/>
+            </svg>
+            <div class="burst" data-burst></div>
+          </div>
+          <h2 class="confirmation__title" tabindex="-1" data-confirm-title>You're booked.</h2>
+          <dl class="confirmation__summary review review--plain" data-confirm-summary></dl>
+          <div class="confirmation__actions">
+            <button class="btn btn--primary" type="button" data-ics>Add to calendar</button>
+            <a class="btn btn--ghost" href="index.html">Back to home</a>
+          </div>
+          <p class="confirmation__note">Heads up: this is a demo site, so no real appointment was made.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Static form so Netlify detects it at deploy -->
+    <form name="booking" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="service"><input name="addons"><input name="barber">
+      <input name="date"><input name="time"><input name="name">
+      <input name="phone"><input name="email"><textarea name="notes"></textarea>
+      <input name="bot-field">
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo logo--light" href="index.html">
+          <img class="logo__mark" src="assets/logo.svg" alt="" width="36" height="36">
+          <span class="logo__text">Palm &amp; Blade</span>
+        </a>
+        <p>Sharp cuts, slow afternoons.</p>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Visit</h2>
+        <address>1867 Sunset Mesa Dr<br>El Cajon, CA 92020</address>
+        <p><a href="tel:+16195550147">(619) 555-0147</a><br>
+           <a href="mailto:hello@palmandblade.com">hello@palmandblade.com</a></p>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Hours</h2>
+        <ul class="hours-list" data-hours-list></ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Follow</h2>
+        <p><a href="#">Instagram @palmandblade</a></p>
+        <a class="btn btn--light btn--sm" href="book.html">Book a chair</a>
+      </div>
+    </div>
+    <p class="site-footer__demo container">Palm &amp; Blade is a fictional shop. Demo site designed and built by Kayden Kamberi.</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/pages/book.js"></script>
+</body>
+</html>

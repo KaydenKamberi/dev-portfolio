@@ -1,0 +1,81 @@
+/* Palm & Blade design tokens (PRD Section 4). Tokens only, no selectors besides :root. */
+:root {
+  /* Color (4.2) */
+  --color-stucco: #F3E6D8;
+  --color-stucco-light: #FAF4EC;
+  --color-adobe: #B5532C;
+  --color-rust: #8C3B1E;
+  --color-agave: #6F8466;
+  --color-sky: #9DB8C4;
+  --color-marigold: #E8A33D;
+  --color-mesquite: #2B1D16;
+  --color-mesquite-soft: #5E4A3D;
+
+  /* Tints (derived from the palette above; use instead of raw rgba in page CSS) */
+  --color-mesquite-a10: rgba(43, 29, 22, 0.10);
+  --color-mesquite-a15: rgba(43, 29, 22, 0.15);
+  --color-mesquite-a40: rgba(43, 29, 22, 0.40);
+  --color-mesquite-a70: rgba(43, 29, 22, 0.70);
+  --color-stucco-a85: rgba(243, 230, 216, 0.85);
+  --color-stucco-light-a15: rgba(250, 244, 236, 0.15);
+  --color-rust-a10: rgba(140, 59, 30, 0.10);
+  --color-rust-a25: rgba(140, 59, 30, 0.25);
+  --color-adobe-a50: rgba(181, 83, 44, 0.50);
+  --color-marigold-a35: rgba(232, 163, 61, 0.35);
+  --color-marigold-a60: rgba(232, 163, 61, 0.60);
+  --color-agave-a15: rgba(111, 132, 102, 0.15);
+
+  /* Golden-hour gradient (Section 7.1) */
+  --gradient-golden: linear-gradient(160deg, var(--color-marigold-a35) 0%, var(--color-adobe-a50) 100%);
+
+  /* Soft palm frond silhouette (blur baked in), used as a CSS mask; fill comes from background-color */
+  --palm-frond: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 234 234'%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='2.2'/%3E%3C/filter%3E%3Cpath filter='url(%23b)' d='M14.3 193.1L20.2 181.2L26.3 169.7L32.9 158.7L39.7 148.1L46.9 138L54.4 128.3L62.3 119.1L70.5 110.3L79.1 102L88 94.2L97.2 86.7L106.8 79.8L116.7 73.3L127 67.2L137.7 61.6L148.7 56.5L160 51.8L171.7 47.5L183.7 43.7L196.1 40.4L195.9 39.6L183.4 42.7L171.3 46.3L159.5 50.4L148 54.9L136.8 59.9L126 65.3L115.5 71.3L105.4 77.7L95.5 84.5L86 91.8L76.9 99.6L68.1 107.9L59.6 116.6L51.4 125.8L43.6 135.5L36.1 145.7L29 156.3L22.2 167.3L15.8 178.9L9.7 190.9ZM24.3 168.5Q40.4 178.3 61.7 173.8Q41.9 167.6 24.3 168.5ZM24.3 168.5Q21 153 6.4 135.2Q11.5 158.1 24.3 168.5ZM29.8 159.2Q49 169.7 74.3 166.5Q50.7 159.2 29.8 159.2ZM29.8 159.2Q26 140.6 10.6 118.5Q16.4 145.2 29.8 159.2ZM35.6 150.3Q57.4 161.6 86.2 159.6Q59.3 151.3 35.6 150.3ZM35.6 150.3Q31.7 128.9 16 102.7Q22 132.8 35.6 150.3ZM41.6 141.6Q65.7 153.9 97.4 153.2Q67.8 143.8 41.6 141.6ZM41.6 141.6Q38 117.8 22.8 87.9Q28.3 121.2 41.6 141.6ZM47.9 133.3Q73.6 146.4 107.6 147.1Q75.9 136.6 47.9 133.3ZM47.9 133.3Q45.1 107.4 30.8 74.5Q35.3 110.2 47.9 133.3ZM54.4 125.3Q81.3 139.3 116.9 141.3Q83.8 129.7 54.4 125.3ZM54.4 125.3Q52.7 97.9 39.8 62.5Q43 100.2 54.4 125.3ZM61.2 117.6Q88.7 132.5 125.2 135.7Q91.3 123 61.2 117.6ZM61.2 117.6Q60.8 89.3 49.6 52Q51.2 91 61.2 117.6ZM68.1 110.3Q95.7 125.8 132.6 130.1Q98.6 116.6 68.1 110.3ZM68.1 110.3Q69.4 81.5 60.2 43.3Q59.8 82.7 68.1 110.3ZM75.4 103.2Q102.5 119.3 139 124.6Q105.5 110.4 75.4 103.2ZM75.4 103.2Q78.2 74.8 71.3 36.2Q68.8 75.4 75.4 103.2ZM82.8 96.5Q109 113 144.6 119Q112.2 104.3 82.8 96.5ZM82.8 96.5Q87.4 68.9 82.6 30.8Q78.1 69 82.8 96.5ZM90.5 90.1Q115.4 106.8 149.4 113.2Q118.7 98.3 90.5 90.1ZM90.5 90.1Q96.6 63.9 93.9 26.9Q87.5 63.5 90.5 90.1ZM98.5 84.1Q121.5 100.7 153.6 107.3Q125 92.4 98.5 84.1ZM98.5 84.1Q105.9 59.8 105.1 24.6Q97 58.8 98.5 84.1ZM106.6 78.3Q127.6 94.6 157.3 101.2Q131.3 86.6 106.6 78.3ZM106.6 78.3Q115.2 56.4 115.9 23.5Q106.5 54.9 106.6 78.3ZM115.1 72.9Q133.7 88.7 160.7 94.9Q137.4 80.9 115.1 72.9ZM115.1 72.9Q124.3 53.7 126.3 23.6Q115.9 51.8 115.1 72.9ZM123.7 67.8Q139.8 82.8 163.8 88.3Q143.7 75.3 123.7 67.8ZM123.7 67.8Q133.4 51.5 136.2 24.6Q125.3 49.2 123.7 67.8ZM132.6 63.1Q146.1 77.1 167 81.7Q150 69.8 132.6 63.1ZM132.6 63.1Q142.3 49.9 145.6 26.2Q134.5 47.1 132.6 63.1ZM141.7 58.6Q152.6 71.5 170.2 74.9Q156.6 64.4 141.7 58.6ZM141.7 58.6Q151.2 48.5 154.3 28.3Q143.7 45.4 141.7 58.6ZM151.1 54.5Q159.3 66.1 173.8 68.2Q163.4 59.3 151.1 54.5ZM151.1 54.5Q159.9 47.5 162.6 30.6Q152.7 44 151.1 54.5ZM160.7 50.7Q166.3 60.9 177.8 61.5Q170.5 54.3 160.7 50.7ZM160.7 50.7Q168.5 46.6 170.5 33Q161.7 42.8 160.7 50.7ZM170.6 47.2Q175.2 56.9 185.6 57.2Q179.4 50.5 170.6 47.2ZM170.6 47.2Q178.1 44.3 180.1 31.9Q171.6 40.3 170.6 47.2ZM180.7 44.1Q185.2 53.7 195.5 54.3Q189.4 47.6 180.7 44.1ZM180.7 44.1Q188.3 41.5 190.9 29.3Q182.2 37.3 180.7 44.1ZM191 41.2Q195.4 50.9 205.6 51.8Q199.7 45 191 41.2ZM191 41.2Q198.8 39.1 202 27Q193.1 34.6 191 41.2Z'/%3E%3C/svg%3E");
+
+  /* Fonts (4.3) */
+  --font-display: 'Shrikhand', 'Georgia', serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Type scale (4.3) */
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  --text-3xl: clamp(2.75rem, 1.8rem + 4.5vw, 5.5rem);
+
+  --leading-body: 1.6;
+  --leading-tight: 1.05;
+  --leading-heading: 1.15;
+  --measure: 65ch;
+
+  /* Spacing (4.4) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-warm: 0 12px 32px -8px rgba(140, 59, 30, 0.22);
+  --shadow-lift: 0 20px 44px -12px rgba(43, 29, 22, 0.30);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-med: 450ms;
+  --dur-slow: 900ms;
+
+  /* Layout */
+  --container: 1200px;
+  --header-h: 72px;
+}
