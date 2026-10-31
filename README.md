@@ -55,7 +55,7 @@ Fix anything it lists, then run it again until it says "All clear."
 ```
 index.html              The whole portfolio (one page)
 assets/css/style.css    Styles, theme colors, responsive layout
-assets/js/main.js       Mobile menu, light/dark toggle, live previews
+assets/js/main.js       Mobile menu, live previews
 assets/img/og-image.png Image shown when the link is shared on social media
 favicon.svg             Browser tab icon (+ favicon-32.png, apple-touch-icon.png)
 robots.txt, sitemap.xml Search engine files

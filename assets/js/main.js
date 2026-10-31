@@ -1,9 +1,7 @@
 /* Kayden Kamberi – portfolio
-   Mobile menu, theme toggle, lazy live previews. */
+   Mobile menu, lazy live previews. */
 (function () {
   "use strict";
-
-  var root = document.documentElement;
 
   /* ---------- Mobile menu ---------- */
   var navToggle = document.querySelector(".nav-toggle");
@@ -25,21 +23,6 @@
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeNav();
-    });
-  }
-
-  /* ---------- Theme toggle ---------- */
-  var themeToggle = document.querySelector(".theme-toggle");
-  // Night Ink (dark) is the default; "light" is only set by this toggle
-  function currentTheme() {
-    return root.getAttribute("data-theme") === "light" ? "light" : "dark";
-  }
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
-      var next = currentTheme() === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
     });
   }
 

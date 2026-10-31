@@ -29,23 +29,6 @@
   color-scheme: dark;
 }
 
-/* Light version, used only when the visitor clicks the theme toggle.
-   Same layout and fonts, ink-on-paper colors, darker gold for contrast. */
-:root[data-theme="light"] {
-  --bg: #F4EFE6;
-  --surface: #EBE4D7;
-  --card: #FAF7F1;
-  --border: #DCD2C1;
-  --border-strong: #CEC2AE;
-  --text: #0D1117;
-  --text-muted: #4A525C;
-  --label: #59616B;
-  --accent: #7A5C17;
-  --accent-hover: #8C6A1E;
-  --on-accent: #FAF7F1;
-  color-scheme: light;
-}
-
 :root {
   --radius: 14px;
   --radius-sm: 10px;
@@ -250,8 +233,7 @@ img, svg { display: block; }
 }
 .nav-list a.nav-cta:hover { background: var(--accent); color: var(--on-accent); }
 
-.nav-toggle,
-.theme-toggle {
+.nav-toggle {
   display: grid;
   place-items: center;
   width: 40px; height: 40px;
@@ -263,7 +245,6 @@ img, svg { display: block; }
   cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease;
 }
-.theme-toggle:hover,
 .nav-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
 .nav-toggle { display: none; }
@@ -286,12 +267,6 @@ img, svg { display: block; }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar { background: transparent; }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar::before { transform: translateY(5px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar::after { transform: translateY(-5px) rotate(-45deg); }
-
-/* Night Ink is the default: show the sun (click for light).
-   In the light version, show the moon (click for Night Ink). */
-.theme-toggle .icon-moon { display: none; }
-:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
-:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
 /* ---------- Hero ---------- */
 
@@ -744,10 +719,6 @@ hr { border: 0; border-top: 1px solid var(--border); }
   .nav-list.is-open { display: flex; }
   .nav-list a { padding: 12px 14px; font-size: 16px; }
   .nav-list a.nav-cta { display: flex; margin-top: 6px; text-align: center; }
-
-  /* Order: brand, theme toggle, menu button */
-  .theme-toggle { order: 1; }
-  .nav { order: 2; }
 
   .work-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; gap: 20px; }
